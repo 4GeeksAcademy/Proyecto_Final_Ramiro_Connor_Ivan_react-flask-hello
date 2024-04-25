@@ -9,6 +9,7 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Single } from "./pages/single";
 import { Session } from "./pages/session";
+import { RankingGlobal } from "./pages/rankingGlobal";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -35,6 +36,7 @@ const Layout = () => {
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<Session />} path="/session" />
+                        <Route element={<RankingGlobal />} path="/ranking-global" />
                         
                     </Routes>
                     <Footer />

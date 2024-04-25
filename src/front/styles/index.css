@@ -40,6 +40,9 @@
     position: relative;
     /* display: inline-block; */
 }
+.su-posicion{
+    background-color: #4F6F52;
+}
 .boton {
     position: absolute;
     font-family: "Permanent Marker", cursive;
@@ -86,4 +89,40 @@
 }
 .Iconholder{
     background-color: #6AD4DD;
+}
+.podio{
+    position: relative;
+}
+.primeros3{
+    position: absolute;
+}
+.segundo{
+    position: absolute;
+    font-family: "Permanent Marker", cursive;
+    font-size: 40px;
+    top: 28%; /* Ajusta la posición vertical del botón */
+    left: 27%;/* left: 0%; Ajusta la posición horizontal del botón */
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.primero{
+    position: absolute;
+    font-family: "Permanent Marker", cursive;
+    font-size: 40px;
+    top: 9%; /* Ajusta la posición vertical del botón */
+    left: 54%;/* left: 0%; Ajusta la posición horizontal del botón */
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.tercero{
+    position: absolute;
+    font-family: "Permanent Marker", cursive;
+    font-size: 40px;
+    top: 39%; /* Ajusta la posición vertical del botón */
+    left: 76%;/* left: 0%; Ajusta la posición horizontal del botón */
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    cursor: pointer;
 }

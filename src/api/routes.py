@@ -111,3 +111,43 @@ def login():
 #     }
     
 #     return jsonify(response_body), 200
+
+@api.route('/country', methods=['GET'])
+def get_country():
+    countries = Country.query.all()
+    serialized_countries = [country.serialize() for country in countries]
+    return jsonify(serialized_countries)
+
+@api.route('/country/<int:country_id>', methods=['GET'])
+def get_one_country(country_id):
+    query_results = Country.query.filter_by(id=country_id).first()
+   
+
+    if query_results is None:
+        return jsonify({"msg": "there is no country matching the ID provided"}), 404
+    
+    response_body = {
+        "msg": "ok",
+        "results": query_results.serialize()
+    }
+    return jsonify(response_body), 200
+
+@api.route('/question', methods=['GET'])
+def get_question():
+    question = Question.query.all()
+    serialized_question = [question.serialize() for question in question]
+    return jsonify(serialized_question)
+
+@api.route('/question/<int:question_id>', methods=['GET'])
+def get_one_question(question_id):
+    query_results = Question.query.filter_by(id=question_id).first()
+   
+
+    if query_results is None:
+        return jsonify({"msg": "there is no question matching the ID provided"}), 404
+    
+    response_body = {
+        "msg": "ok",
+        "results": query_results.serialize()
+    }
+    return jsonify(response_body), 200

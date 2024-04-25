@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import google from "../../img/googlelogin.png";
+import { gapi } from "gapi-script"
+import GoogleLogin from "react-google-login";
 
 import { Context } from "../store/appContext";
 
@@ -10,6 +12,31 @@ export const Register = () => {
     const [email, setEmail] = useState("")
     const [contraseña, setContraseña] = useState("")
     const navigate = useNavigate();
+
+    // Google 
+    const clientID = "907740724351-apgngd00u4vmjma9nrvlohln4n2t5600.apps.googleusercontent.com"
+
+    useEffect(()=>{
+        const start = ()=>{
+            gapi.auth2.init({
+                client_id: clientID,
+            });
+        }
+        gapi.load("client:auth2",start)
+    },[])
+
+    async function onSuccess (response) {
+        console.log(response);
+        await actions.registrarUsuario(response.profileObj.email, response.profileObj.googleId)
+        if (store.navigate==true) {
+            navigate('/')
+        }
+        store.navigate = false
+    }
+    function onFailure () {
+        console.log("Hubo un error");
+    }
+    // fin de Google
 
     async function registrarUsuario(e){
         e.preventDefault()
@@ -43,7 +70,14 @@ export const Register = () => {
                 <p className="mb-0">¿Ya tienes una cuenta? <Link to="/login">Login</Link></p>
                 <p className="text-center mb-2">OR</p>
                 <div className="text-center">
-                    <img src={google} style={{width : "300px", height : "70px" }}/>
+                    {/* <img src={google} style={{width : "300px", height : "70px" }}/> */}
+                    <GoogleLogin
+                        clientID={clientID}
+                        onSuccess={onSuccess}
+                        onFailure={onFailure}
+                        cookiePolicy={"single_host_policy"}
+                    
+                    />
                 </div>
 
 

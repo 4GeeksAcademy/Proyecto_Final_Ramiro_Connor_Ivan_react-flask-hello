@@ -154,20 +154,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			questionRandom: function(numberRandom){
-				fetch('https://refactored-telegram-4jv976pw4xrf7gxg-3001.app.github.dev/api/question/'+numberRandom)
+				fetch(process.env.BACKEND_URL +"/api/question/" +numberRandom)
 				    .then((response)=>response.json())
 				    .then((data)=>setStore({question:data.results}))
 				    .catch((error)=>console.log(error))
 					
 			},
 			wrongChoice: function(numberRandom){
-				fetch('https://refactored-telegram-4jv976pw4xrf7gxg-3001.app.github.dev/api/country/'+numberRandom)
+				fetch(process.env.BACKEND_URL +"/api/country/"+numberRandom)
 				    .then((response)=>response.json())
 				    .then((data)=>setStore({option1:data.results}))
 				    .catch((error)=>console.log(error))
 			},
 			wrongChoice1: function(numberRandom){
-				fetch('https://refactored-telegram-4jv976pw4xrf7gxg-3001.app.github.dev/api/country/'+numberRandom)
+				fetch(process.env.BACKEND_URL + "/api/country/"+numberRandom)
 				    .then((response)=>response.json())
 				    .then((data)=>setStore({option2:data.results}))
 				    .catch((error)=>console.log(error))

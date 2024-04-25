@@ -37,9 +37,6 @@ export const Navbar = () => {
 					{parteEspecifica3}
 				</div>
 				<div className="ml-auto">
-					{/* <Link to="/login">
-						<i class="fa-solid fa-circle-user fa-2x m-3 text-black "></i>
-					</Link> */}
 					{store.tokenOK ? <div class="btn-group dropstart">
 						<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							<i class="fa-solid fa-circle-user fa-2x m-3 text-black "></i>

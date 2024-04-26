@@ -4,18 +4,18 @@ import { Context } from "../store/appContext";
 import { disableValidation } from "schema-utils";
 
 export const Session = () => {
-    const {store,actions}=useContext(Context)
+    const { store, actions } = useContext(Context)
     let randNum1 = Math.floor(Math.random() * 10) + 1;
     let randNum2 = Math.floor(Math.random() * 15) + 1;
     let randNum3 = Math.floor(Math.random() * 15) + 1;
     // let questionImage= store.question.image;
-    useEffect(()=>{
-        
+    useEffect(() => {
+
         actions.questionRandom(randNum1);
         actions.wrongChoice(randNum2);
         actions.wrongChoice1(randNum3);
-        
-    },[])
+
+    }, [])
     console.log(store.option2?.image)
     
 	return (

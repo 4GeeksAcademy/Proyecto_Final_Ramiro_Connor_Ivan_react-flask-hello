@@ -7,17 +7,25 @@ import { Context } from "../store/appContext";
 export const RankingGlobal = () => {
     const { store, actions } = useContext(Context);
 
+    let arrayTopTen= store.topTen[0]
+
+    useEffect(()=>{
+        actions.topTenRanking()
+    },[])
+
+    console.log(arrayTopTen);
+
     return (
         <div className="back-texto2 p-5 h-auto ">
             <div className="container">
                 <div className="text-center podio">
                     <img src={podio} className="text-center" />
-                    <h4 className="primeros3 segundo">Ivan(450)</h4>
+                    {/* <h4 className="primeros3 segundo">{arrayTopTen[1]?.user_name}</h4> */}
                     <h4 className="primeros3 primero">Connor(490)</h4>
                     <h4 className="primeros3 tercero">Ramiro(430)</h4>
                 </div>
                 <div>
-                    <table class="table back-texto3">
+                    <table className="table back-texto3">
                         <thead>
                             <tr>
                                 <th scope="col">Posicion</th>

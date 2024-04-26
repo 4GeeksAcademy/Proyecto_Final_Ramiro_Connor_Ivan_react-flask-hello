@@ -19,6 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			question: null,
 			option1: null,
 			option2: null,
+			topTen:null,
 		},
 
 		actions: {
@@ -171,7 +172,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				    .then((response)=>response.json())
 				    .then((data)=>setStore({option2:data.results}))
 				    .catch((error)=>console.log(error))
-			}
+			},
+			topTenRanking: async function () {
+				console.log();
+				try{
+					const response = await fetch(process.env.BACKEND_URL+'/api/results')
+					const data = await response.json()
+					console.log(data);
+					console.log(response.status);
+					if (response.status == 200){
+						setStore({topTen:data.results})
+					}
+					return true
+				} catch (error) {
+					console.error(err)
+
+				}
+			},
 
 
 		}

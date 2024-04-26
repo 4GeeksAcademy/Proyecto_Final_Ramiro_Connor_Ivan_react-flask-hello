@@ -14,6 +14,9 @@
     color: white;
     font-size: 150px; 
   }
+.iniciar-sesion{
+    font-size: 20px;
+}
 .negrita{
     font-weight: bold;
 }
@@ -62,7 +65,10 @@
     position: relative;
     /* display: inline-block; */
 }
-.creadores {
+.navbar-text{
+    font-size: 20px;
+}
+.creadores-posicion {
     position: absolute;
     font-family: "Permanent Marker", cursive;
     height: 108px;
@@ -71,7 +77,13 @@
     transform: translate(-50%, -50%);
     cursor: pointer;
 }
-.agradecimientos {
+.creadores-titulo{
+    font-size: 20px;
+}
+.creadores{
+    font-size: 15px;
+}
+.agradecimientos-posicion {
     position: absolute;
     font-family: "Permanent Marker", cursive;
     top: 50%; /* Ajusta la posición vertical del botón */
@@ -79,6 +91,12 @@
     transform: translate(-50%, -50%);
     padding: 10px 20px;
     cursor: pointer;
+}
+.agradecimientos-titulo{
+    font-size: 20px;
+}
+.agradecimientos{
+    font-size: 15px;
 }
 .login{
     font-size: 27px; 
@@ -93,8 +111,14 @@
 .podio{
     position: relative;
 }
+.geeks{
+ font-size: 20px;
+}
 .primeros3{
     position: absolute;
+}
+.pading-texto{
+    padding: 100px;
 }
 .segundo{
     position: absolute;
@@ -125,4 +149,102 @@
     transform: translate(-50%, -50%);
     padding: 10px 20px;
     cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+    .titulo{
+        font-size: 110px;
+    }
+    .texto{
+        font-size: 20px;
+    }
+    .navbar-text{
+        font-size: 15px;
+    }
+    .creadores-posicion{
+        top: 43%; 
+        left: 15%;
+        height: 75px;
+    }
+    .agradecimientos-posicion{
+        top: 50%; 
+        left: 85%;
+        height: 70px;
+    }
+    .creadores{
+        font-size: 15px;
+    }
+    .creadores-titulo{
+        font-size: 20px;
+    }
+    .agradecimientos{
+        font-size: 15px;
+    }
+    .agradecimientos-titulo{
+        font-size: 20px;
+    }
+    .geeks{
+        font-size:15px;
+    }
+    .boton{
+        font-size: 35px;
+    }
+    .logo{
+        height: 45px;
+        width: 45px;
+    }
+    .iniciar-sesion{
+        font-size: 15px;
+    }
+    .pading-texto{
+        padding: 25px;
+    }
+}
+@media screen and (max-width: 425px) {
+    .titulo{
+        font-size: 40px;
+    }
+    .texto{
+        font-size: 15px;
+    }
+    .navbar-text{
+        font-size: 10px;
+    }
+    .creadores-posicion{
+        top: 50%; 
+        left: 15%;
+        height: 75px;
+    }
+    .agradecimientos-posicion{
+        top: 50%; 
+        left: 85%;
+        height: 70px;
+    }
+    .creadores{
+        font-size: 10px;
+    }
+    .creadores-titulo{
+        font-size: 10px;
+    }
+    .agradecimientos{
+        font-size: 10px;
+    }
+    .agradecimientos-titulo{
+        font-size: 10px;
+    }
+    .geeks{
+        font-size:10px;
+    }
+    .boton{
+        font-size: 25px;
+    }
+    .logo{
+        height: 35px;
+        width: 35px;
+    }
+    .iniciar-sesion{
+        font-size: 10px;
+    }
+    .pading-texto{
+        padding: 15px;
+    }
 }

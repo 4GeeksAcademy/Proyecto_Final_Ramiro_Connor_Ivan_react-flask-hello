@@ -51,17 +51,17 @@ def setup_commands(app):
         try:
             # User info
             users = [
-                User(email="messi@yahoo.com", password="111111", country="Argentina", is_active=True),
-                User(email="gandhi@yahoo.com", password="222222", country="India", is_active=True),
-                User(email="ronaldinho@yahoo.com", password="333333", country="Brazil", is_active=True)
+                User(username="messi", email="messi@yahoo.com", password="111111", country="Argentina", is_active=True, id=1),
+                User(username="gandhi", email="gandhi@yahoo.com", password="222222", country="India", is_active=True, id=2),
+                User(username="ronaldinho", email="ronaldinho@yahoo.com", password="333333", country="Brazil", is_active=True, id=3)
             ]
             db.session.add_all(users)
             db.session.commit()
             # Each User's results of all games played
             results = [
-                Results(rounds_played=75, wins=50, losses=25),
-                Results(rounds_played=100, wins=45, losses=55),
-                Results(rounds_played=36, wins=35, losses=1)
+                Results(points=25000, user_name=users[0].username),
+                Results(points=1000, user_name=users[1].username),
+                Results(points=15000, user_name=users[2].username)
             ]
             db.session.add_all(results)
             db.session.commit()

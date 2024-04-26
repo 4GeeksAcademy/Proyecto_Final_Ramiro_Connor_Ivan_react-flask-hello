@@ -5,6 +5,7 @@ db = SQLAlchemy()
 class User(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(60), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     country = db.Column(db.String(60), unique=False, nullable=True)
@@ -17,6 +18,7 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
+            "username": self.username,
             "country": self.country
             # do not serialize the password, its a security breach
         }
@@ -45,11 +47,23 @@ class User(db.Model):
 class Results(db.Model):
     __tablename__ = 'results'
     id = db.Column(db.Integer, primary_key=True)
-    rounds_played = db.Column(db.Integer)
-    wins = db.Column(db.Integer)
-    losses = db.Column(db.Integer)
-    # user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    # user = db.relationship(User)
+    points = db.Column(db.Integer)
+    # wins = db.Column(db.Integer)
+    # losses = db.Column(db.Integer)
+    user_name = db.Column(db.String, db.ForeignKey('user.username'), nullable=False)
+    user = db.relationship('User', backref='results')
+
+    def __repr__(self):
+        return f'<Results {self.id}>'
+    
+    def serialize(self):
+        return {
+            "id": self.id,
+            "points": self.points,
+            "user_name": self.user.username,  # Access the user's email through the relationship
+        }
+    
+
 
 class Country(db.Model):
     __tablename__ = 'country'

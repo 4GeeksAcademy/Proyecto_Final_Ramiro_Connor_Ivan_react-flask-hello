@@ -2,10 +2,11 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Question, Country
+from api.models import db, User, Question, Country, Results
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from sqlalchemy import desc, func
 
 api = Blueprint('api', __name__)
 
@@ -56,12 +57,13 @@ def create_user():
     # query_result = Characters.query.filter_by(id=characters_id).first()
     data = request.json
     print(data)
-    user = User.query.filter_by(email=data['email']).first()
-    if user: 
+    user_email = User.query.filter_by(email=data['email']).first()
+    user_name = User.query.filter_by(email=data['username']).first()
+    if user_email or user_name: 
         return jsonify({
-            "msg": "email already in use" 
+            "msg": "email and/or username already in use" 
         }), 418
-    new_user = User(password=data["password"], email=data["email"], is_active=True)
+    new_user = User(username=data["username"],password=data["password"], email=data["email"], is_active=True)
     db.session.add(new_user)
     db.session.commit()
     token = create_access_token(identity = new_user.id)
@@ -88,7 +90,7 @@ def login():
         return jsonify({
             "msg": "wrong email and password, too bad"
         }), 401
-    token = create_access_token(identity = user.id)
+    token = create_access_token(identity = user.username)
     response_body = {
         "msg": "All working",
         "token": token,
@@ -97,6 +99,56 @@ def login():
     }    
 
     return jsonify(response_body), 200
+
+@api.route("/protected", methods=["GET"])
+@jwt_required()
+def protected():
+    # Access the identity of the current user with get_jwt_identity
+    current_user_id = get_jwt_identity()
+    user = User.query.filter_by(id=current_user_id).first()
+    print("current user is this:", current_user_id)
+    if user is None:
+        raise APIException("User not found", status_code=404)
+    return jsonify({
+        "msg": "User authenticated",
+        "user": user.serialize()
+    }), 200
+
+@api.route("/results", methods=["GET"])
+def get_top_10_results():
+    query_results = Results.query.order_by(desc(Results.points)).limit(10).all()
+    results = list(map(lambda item: item.serialize(), query_results))
+    
+    if results == []:
+        return jsonify("no results in the database"), 404
+    
+    response_body = {
+        "msg": "ok",
+        "results": results
+    }
+    
+    return jsonify(response_body), 200
+
+@api.route('/results/<string:username>', methods=['GET'])
+def get_one_users_results(username):
+    user_points = Results.query.filter_by(user_name=username).with_entities(func.max(Results.points)).scalar()
+
+    if user_points is None:
+        return jsonify({"msg": "there are no points to show for this user: " +username}), 404
+    
+    response_body = {
+        "msg": "all ok",
+        "results": user_points
+    }
+    return jsonify(response_body), 200
+
+# @api.route("/results", methods=["POST"])
+# def create_results():
+#     # Create the results after players first game
+#     data = request.json
+#     print(data)
+    
+
 # @api.route('/question', methods=['GET'])
 # def get_all_questions():
 #     query_results = Question.query.all()

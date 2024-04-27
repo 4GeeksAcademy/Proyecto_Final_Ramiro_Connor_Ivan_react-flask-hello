@@ -79,8 +79,8 @@ def setup_commands(app):
                 Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/italy_flag", name="Italy"),
                 Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/mexico_flag", name="Mexico"),
                 Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/peru_flag", name="Peru"),
-                Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/uk_flag", name="United Kingdom"),
-                Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/usa_flag", name="United States"),
+                Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/united_kingdom_flag", name="United Kingdom"),
+                Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/united_states_flag", name="United States"),
                 Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/venezuela_flag", name="Venezuela")
             ]
             db.session.add_all(countries)

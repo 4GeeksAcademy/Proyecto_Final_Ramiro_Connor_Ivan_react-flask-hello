@@ -57,10 +57,11 @@ class Results(db.Model):
         return f'<Results {self.id}>'
     
     def serialize(self):
+        user_name = self.user.username if self.user else None  # Access the username if user is not None
         return {
             "id": self.id,
             "points": self.points,
-            "user_name": self.user.username,  # Access the user's email through the relationship
+            "user_name": user_name,
         }
     
 

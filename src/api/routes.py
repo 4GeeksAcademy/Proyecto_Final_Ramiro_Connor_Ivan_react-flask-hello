@@ -54,7 +54,6 @@ def get_one_user(user_id):
 
 @api.route('/user', methods=['POST'])
 def create_user():
-    # query_result = Characters.query.filter_by(id=characters_id).first()
     data = request.json
     print(data)
     user_email = User.query.filter_by(email=data['email']).first()
@@ -63,7 +62,11 @@ def create_user():
         return jsonify({
             "msg": "email and/or username already in use" 
         }), 418
-    new_user = User(username=data["username"],password=data["password"], email=data["email"], is_active=True)
+    
+    first_available_id = db.session.query(func.max(User.id)).scalar()
+    new_user_id = (first_available_id or 0) + 1
+    
+    new_user = User(id=new_user_id, username=data["username"],password=data["password"], email=data["email"], is_active=True)
     db.session.add(new_user)
     db.session.commit()
     token = create_access_token(identity = new_user.id)
@@ -140,6 +143,21 @@ def get_one_users_results(username):
         "msg": "all ok",
         "results": user_points
     }
+    return jsonify(response_body), 200
+
+@api.route('/results', methods=['POST'])
+def save_result():
+    data = request.json
+    print(data)
+    new_result = Results(user_name=data["username"], points=data["points"])
+    print(new_result)
+    db.session.add(new_result)
+    db.session.commit()
+    response_body = {
+        "msg": "User's result has been successfully added to the database",
+        "new result": new_result.serialize()
+    }
+
     return jsonify(response_body), 200
 
 # @api.route("/results", methods=["POST"])

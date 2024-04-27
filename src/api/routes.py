@@ -69,10 +69,10 @@ def create_user():
     new_user = User(id=new_user_id, username=data["username"],password=data["password"], email=data["email"], is_active=True)
     db.session.add(new_user)
     db.session.commit()
-    token = create_access_token(identity = new_user.id)
+    # token = create_access_token(identity = new_user.id)
     response_body = {
         "msg": "All working",
-        "token": token,
+        # "token": token,
         "user": new_user.serialize()
         # "query result": query_result
     }
@@ -107,9 +107,9 @@ def login():
 @jwt_required()
 def protected():
     # Access the identity of the current user with get_jwt_identity
-    current_user_id = get_jwt_identity()
-    user = User.query.filter_by(id=current_user_id).first()
-    print("current user is this:", current_user_id)
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+    print("current user is this:", current_user)
     if user is None:
         raise APIException("User not found", status_code=404)
     return jsonify({

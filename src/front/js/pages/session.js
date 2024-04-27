@@ -1,60 +1,53 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { disableValidation } from "schema-utils";
-
 export const Session = () => {
-    const { store, actions } = useContext(Context)
-    let randNum1 = Math.floor(Math.random() * 10) + 1;
-    let randNum2 = Math.floor(Math.random() * 15) + 1;
-    let randNum3 = Math.floor(Math.random() * 15) + 1;
-    // let questionImage= store.question.image;
+    const { store, actions } = useContext(Context);
     useEffect(() => {
-
+        let randNum1 = Math.floor(Math.random() * 10) + 1;
+        let randNum2 = Math.floor(Math.random() * 15) + 1;
+        let randNum3 = Math.floor(Math.random() * 15) + 1;
         actions.questionRandom(randNum1);
         actions.wrongChoice(randNum2);
         actions.wrongChoice1(randNum3);
-
-    }, [])
-    console.log(store.option2?.image)
+    }, []);
+    const respuestas = [
+        { nombre: "correcta", imagen: store.question?.country_info.image, id:store.question?.country_info.id },
+        { nombre: "erronea1", imagen: store.option1?.image, id:store.option1?.id },
+        { nombre: "erronea2", imagen: store.option2?.image, id:store.option2?.id }
+    ];
+    const shuffledRespuestas = shuffleArray([...respuestas]);
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+    function questionCheker(id){
+        if(id== store.question?.country_info.id){
+            document.getElementById("anunciante").textContent="Correcto"
+        }
+        else{
+            document.getElementById("anunciante").textContent="Falso"
+        }
+        console.log(id)
+    }
     
-	return (
-		<div className="SessionContainer cambria ">
-           <div className="IconWrapper d-flex flex-row justify-content-center  " >
-                <div className="Iconholder d-flex flex-row justify-content-center p-1 border border-dark rounded my-2" style={{width:120, height:40}}>
-                    <div className="bg-success text-center rounded-circle mx-1" style={{width:30, height:30}} >
-                        <i className="fa-solid fa-question fa-beat-fade"></i>
-                        </div>
-                        
-                    <div className="bg-danger text-center rounded-circle mx-1" style={{width:30, height:30}}><i class="fa-solid fa-fire fa-bounce"></i></div>
-                    <div className="bg-primary text-center rounded-circle mx-1" style={{width:30, height:30}}>
-                        <p className="Contador"> 1</p>
-                    </div>
-                </div>
+    return (
+        <div className="SessionContainer cambria">
+            <div className="container text-center">
+                <img className="border border-dark rounded my-2" src={store.question?.image} style={{width:450, height:600}} alt="Country Scene"/>
             </div>
-             <div className="container text-center" >
-                 <img className=" border border-dark rounded my-2"src={store.question?.image} style={{width:300, height:400}} />
-                </div>
-                
             <div className="QuestionHolder text-center">
-                <h1>¿A qué país pertenece esta imagen?</h1>
+                <h1 id="anunciante">¿A qué país pertenece esta imagen?</h1>
             </div>
-            <div className="FlagWrapper d-flex flex-row justify-content-center">
-                <div className="Flagholder d-flex flex-row justify-content-center text-center p-1 my-2 mb-5">
-                <button className="botoncorrectoPH  mx-3 border border-dark rounded" style={{width:160, height:80}}>
-                    <img src={store.question?.country_info.image}/>
-                </button> 
-                <button className="botonmalo1  mx-3 border border-dark rounded" style={{width:160, height:80}}>
-                    <img src={store.option1?.image}/>
-                </button> 
-                <button className="botonmalo2  mx-3 border border-dark rounded" style={{width:160, height:80}}>
-                    <img src={store.option2?.image}/>
-                </button> 
-                </div>
+            <div className="FlagWrapper d-flex flex-row justify-content-center ">
+                {shuffledRespuestas.map((respuesta, index) => (
+                    <button key={index} className={`buttonStyle mx-3 border border-dark rounded my-2`} style={{width:80, height:64}} onClick={()=> questionCheker(respuesta.id)}>
+                        <img src={respuesta.imagen} alt={respuesta.nombre} />
+                    </button>
+                ))}
             </div>
-
         </div>
-        
-        
-	);
+    );
 };

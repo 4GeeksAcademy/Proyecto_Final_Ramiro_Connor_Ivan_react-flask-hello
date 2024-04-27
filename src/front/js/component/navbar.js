@@ -55,7 +55,7 @@ export const Navbar = () => {
 							<i className="fa-solid fa-circle-user fa-2x m-3 text-black "></i>
 						</button>
 						<ul className="dropdown-menu bg-dark p-3">
-							<li><h5 className="text-white">UserName</h5></li>
+							<li><h5 className="text-white">{store.nombreDeUsuario}</h5></li>
 							<li><button className="btn btn-danger" onClick={cerrarSesion}>Cerrar sesión</button></li>
 						</ul>
 					</div> : <Link to="/login">

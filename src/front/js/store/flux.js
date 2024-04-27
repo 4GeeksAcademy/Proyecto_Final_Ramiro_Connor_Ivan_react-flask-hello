@@ -19,7 +19,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			question: null,
 			option1: null,
 			option2: null,
-			topTen:null,
+			posicion1:null,
+			posicion2:null,
+			posicion3:null,
+			posicion4:null,
+			posicion5:null,
+			posicion6:null,
+			posicion7:null,
+			posicion8:null,
+			posicion9:null,
+			posicion10:null,
+			nombreDeUsuario:null,
+			misPuntos:null,
 		},
 
 		actions: {
@@ -65,10 +76,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	"password": "leo",
 			// 	"is_active": true
 			// }
-			registrarUsuario: async function (email, contraseña) {
-				console.log(email, contraseña);
+			registrarUsuario: async function (email, contraseña,nombreDeUsuario) {
+				console.log(email, contraseña, nombreDeUsuario);
 				try{
-					const response = await fetch(`https://congenial-fishstick-v66qpqvx5wj9hw995-3001.app.github.dev/api/user`, {
+					const response = await fetch(process.env.BACKEND_URL +'/api/user', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'
@@ -76,16 +87,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 						body: JSON.stringify({
 							"email": email,
 							"password": contraseña,
-							"is_active": true,
+							"username": nombreDeUsuario,
+							"is_active": true
 						})
 					})
 					const data = await response.json()
 					console.log(data);
 					console.log(response.status);
 					if (response.status == 200){
-						localStorage.setItem("token",data.token)
-						setStore({tokenOK : true})
+						// localStorage.setItem("token",data.token)
+						// setStore({tokenOK : true})
+						getActions().loginUsuario(email,contraseña)
 						setStore({navigate : true})
+						setStore({nombreDeUsuario : data.user.username})
 					}
 					return true
 				} catch (error) {
@@ -125,7 +139,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loginUsuario: async function (email, contraseña) {
 				console.log(email, contraseña);
 				try{
-					const response = await fetch(`https://congenial-fishstick-v66qpqvx5wj9hw995-3001.app.github.dev/api/login`, {
+					const response = await fetch(process.env.BACKEND_URL +'/api/login', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'
@@ -142,6 +156,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						localStorage.setItem("token",data.token)
 						setStore({tokenOK : true})
 						setStore({navigate : true})
+						setStore({nombreDeUsuario : data.user.username})
+						getActions().verificacionToken()
 					}
 					return true
 				} catch (error) {
@@ -181,7 +197,56 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					console.log(response.status);
 					if (response.status == 200){
-						setStore({topTen:data.results})
+						setStore({posicion1:data.results[0]})
+						setStore({posicion2:data.results[1]})
+						setStore({posicion3:data.results[2]})
+						setStore({posicion4:data.results[3]})
+						setStore({posicion5:data.results[4]})
+						setStore({posicion6:data.results[5]})
+						setStore({posicion7:data.results[6]})
+						setStore({posicion8:data.results[7]})
+						setStore({posicion9:data.results[8]})
+						setStore({posicion10:data.results[9]})
+						return true
+					}
+					return true
+				} catch (error) {
+					console.error(err)
+
+				}
+			},
+			verificacionToken: async function () {
+				try{
+					const response = await fetch(process.env.BACKEND_URL+'/api/protected', {
+						method: 'GET',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': 'Bearer ' + localStorage.getItem("token")
+						}
+					})
+					const data = await response.json()
+					console.log(data);
+					console.log(response.status);
+					if (response.status == 200){
+						setStore({nombreDeUsuario : data.user.username})
+						return true
+					}
+					return true
+				} catch (error) {
+					console.error(err)
+
+				}
+			},
+			miMejorPosicion: async function () {
+				try{
+					const response = await fetch(process.env.BACKEND_URL+'/api/results/'+ getStore().nombreDeUsuario)
+					const data = await response.json()
+					console.log(data);
+					console.log(response.status);
+					if (response.status == 200){
+						setStore({mispuntos : data.results})
+						console.log(data.results);
+						return true
 					}
 					return true
 				} catch (error) {

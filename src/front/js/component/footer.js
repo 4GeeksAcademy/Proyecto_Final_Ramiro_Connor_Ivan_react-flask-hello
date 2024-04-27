@@ -5,9 +5,9 @@ export const Footer = () => (
 		<div className="p-0">
 			<ul className="cambria list-unstyled creadores-posicion">
 				<li className="fw-bold creadores-titulo ">Creado por:</li>
-				<li className="creadores "><a href="https://www.linkedin.com/in/connor-clements-425124245/" className="text-black text-decoration-none">Connor Clements  <i class="fa-brands fa-linkedin"></i></a></li>
-				<li className="creadores "><a href="https://www.linkedin.com/in/ramiro-sca-048182226/" className="text-black text-decoration-none">Ramiro Scarinci  <i class="fa-brands fa-linkedin"></i></a></li>
-				<li className="creadores "><a href="https://github.com/Sai40k" className="text-black text-decoration-none pb-0 mb-0">Ivan Torres Álvarez  <i class="fa-brands fa-github"></i></a></li>
+				<li className="creadores "><a href="https://www.linkedin.com/in/connor-clements-425124245/" className="text-black text-decoration-none">Connor Clements  <i className="fa-brands fa-linkedin"></i></a></li>
+				<li className="creadores "><a href="https://www.linkedin.com/in/ramiro-sca-048182226/" className="text-black text-decoration-none">Ramiro Scarinci  <i className="fa-brands fa-linkedin"></i></a></li>
+				<li className="creadores "><a href="https://github.com/Sai40k" className="text-black text-decoration-none pb-0 mb-0">Ivan Torres Álvarez  <i className="fa-brands fa-github"></i></a></li>
 			</ul>
 		</div>
 		<div className="p-0 agradecimientos-posicion">

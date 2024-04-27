@@ -11,6 +11,7 @@ export const Register = () => {
     const { store, actions } = useContext(Context);
     const [email, setEmail] = useState("")
     const [contraseña, setContraseña] = useState("")
+    const [nombreDeUsuario, setNombreDeUsuario] = useState("")
     const navigate = useNavigate();
 
     // Google 
@@ -41,7 +42,7 @@ export const Register = () => {
     async function registrarUsuario(e){
         e.preventDefault()
         console.log(email,contraseña);
-        await actions.registrarUsuario(email, contraseña)
+        await actions.registrarUsuario(email, contraseña, nombreDeUsuario)
         console.log(store.navigate);
         if (store.navigate==true) {
             navigate('/')
@@ -60,7 +61,7 @@ export const Register = () => {
                     <p className="mb-0 login">Email:</p>
                     <input type="text" placeholder="ejemplo@gmail.com" className="w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input>
                     <p className="mb-0 login">Nombre de Usuario:</p>
-                    <input type="text" className="w-100 mb-4 login"></input>
+                    <input type="text" className="w-100 mb-4 login" onChange={event => setNombreDeUsuario(event.target.value)}></input>
                     <p className="mb-0 login">Contraseña:</p>
                     <input type="password" className="mb-4 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br/>
                     <div className="text-center">

@@ -8,10 +8,12 @@ export const RankingGlobal = () => {
     const { store, actions } = useContext(Context);
 
 
-    useEffect(()=>{
+    useEffect(async ()=>{
+        await actions.verificacionToken();
         actions.topTenRanking()
         actions.miMejorPosicion()
     },[])
+    console.log(store.nombreDeUsuario)
 
     return (
         <div className="back-texto2 p-5 h-auto ">
@@ -39,39 +41,39 @@ export const RankingGlobal = () => {
                             </tr>
                             <tr>
                                 <th scope="row">5</th>
-                                <td>{store.posicion4?.user_name}</td>
-                                <td>{store.posicion4?.points}</td>
+                                <td>{store.posicion5?.user_name}</td>
+                                <td>{store.posicion5?.points}</td>
                             </tr>
                             <tr>
                                 <th scope="row">6</th>
-                                <td>{store.posicion4?.user_name}</td>
-                                <td>{store.posicion4?.points}</td>
+                                <td>{store.posicion6?.user_name}</td>
+                                <td>{store.posicion6?.points}</td>
                             </tr>
                             <tr>
                                 <th scope="row">7</th>
-                                <td>{store.posicion4?.user_name}</td>
-                                <td>{store.posicion4?.points}</td>
+                                <td>{store.posicion7?.user_name}</td>
+                                <td>{store.posicion7?.points}</td>
                             </tr>
                             <tr>
                                 <th scope="row">8</th>
-                                <td>{store.posicion4?.user_name}</td>
-                                <td>{store.posicion4?.points}</td>
+                                <td>{store.posicion8?.user_name}</td>
+                                <td>{store.posicion8?.points}</td>
                             </tr>
                             <tr>
                                 <th scope="row">9</th>
-                                <td>{store.posicion4?.user_name}</td>
-                                <td>{store.posicion4?.points}</td>
+                                <td>{store.posicion9?.user_name}</td>
+                                <td>{store.posicion9?.points}</td>
                             </tr>
                             <tr>
                                 <th scope="row">10</th>
-                                <td>{store.posicion4?.user_name}</td>
-                                <td>{store.posicion4?.points}</td>
+                                <td>{store.posicion10?.user_name}</td>
+                                <td>{store.posicion10?.points}</td>
                             </tr>
                             <tr className="su-posicion text-white">
                                 <th scope="row">su posicion</th>
                                 {/* <td colspan="2">Larry the Bird</td> */}
                                 <td>{store.nombreDeUsuario}</td>
-                                <td>{store.misPuntos}</td>
+                                <td>{store.mispuntos}</td>
                             </tr>
                         </tbody>
                     </table>

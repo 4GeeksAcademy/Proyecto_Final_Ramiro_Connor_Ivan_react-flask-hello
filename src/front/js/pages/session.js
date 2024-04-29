@@ -2,13 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 export const Session = () => {
     const { store, actions } = useContext(Context);
-    useEffect(() => {
+    function inicio(){
         let randNum1 = Math.floor(Math.random() * 10) + 1;
         let randNum2 = Math.floor(Math.random() * 15) + 1;
         let randNum3 = Math.floor(Math.random() * 15) + 1;
         actions.questionRandom(randNum1);
         actions.wrongChoice(randNum2);
         actions.wrongChoice1(randNum3);
+    }
+    useEffect(() => {
+        inicio()
     }, []);
     const respuestas = [
         { nombre: "correcta", imagen: store.question?.country_info.image, id:store.question?.country_info.id },
@@ -24,13 +27,19 @@ export const Session = () => {
         return array;
     }
     function questionCheker(id){
+        let informacion = store.question?.information;
+
         if(id== store.question?.country_info.id){
-            document.getElementById("anunciante").textContent="Correcto"
+            document.getElementById("modal-header").className="bg-success"
+            document.getElementById("titulomodal").textContent="Nice one!"
         }
         else{
-            document.getElementById("anunciante").textContent="Falso"
+            document.getElementById("modal-header").className="bg-danger"
+            document.getElementById("titulomodal").textContent="Wrong!"
         }
         console.log(id)
+
+        document.getElementById("modal-texto").textContent=informacion
     }
     
     return (
@@ -43,11 +52,30 @@ export const Session = () => {
             </div>
             <div className="FlagWrapper d-flex flex-row justify-content-center ">
                 {shuffledRespuestas.map((respuesta, index) => (
-                    <button key={index} className={`buttonStyle mx-3 border border-dark rounded my-2`} style={{width:80, height:64}} onClick={()=> questionCheker(respuesta.id)}>
+                    <button key={index} className={`buttonStyle mx-3 border border-dark rounded my-2`} data-bs-toggle="modal" data-bs-target="#infoModal" style={{width:80, height:64}} onClick={()=> questionCheker(respuesta.id)}>
                         <img src={respuesta.imagen} alt={respuesta.nombre} />
                     </button>
                 ))}
             </div>
-        </div>
+    
+            {/* ---Modal------ */}
+            <div className="modal fade" id="infoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="titulomodal" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                <div className="modal-header" id="modal-header">
+                    <h1 className="modal-title fs-5" id="titulomodal"></h1>
+                </div>
+                <div className="modal-body" >
+                    <p id="modal-texto">
+                        ""
+                    </p>
+                </div>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={inicio}>Understood!</button>
+                </div>
+                </div>
+            </div>
+            </div>
+                    </div>
     );
 };

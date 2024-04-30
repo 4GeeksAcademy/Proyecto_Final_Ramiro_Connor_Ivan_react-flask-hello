@@ -6,12 +6,25 @@ import { Context } from "../store/appContext";
 
 export const RankingGlobal = () => {
     const { store, actions } = useContext(Context);
+    
+    function verificacionNombre () {
+        if (store.nombreDeUsuario == null ){
+            return "Inicia Sesión o Registrate para participar del Ranking Global"
+        } else {
+            return store.nombreDeUsuario
+        }
+    }
 
-
-    useEffect(async ()=>{
-        await actions.verificacionToken();
-        actions.topTenRanking()
-        actions.miMejorPosicion()
+    
+    
+    useEffect(()=>{
+        const init = async function () {
+            await actions.verificacionToken();
+            actions.topTenRanking()
+            actions.miMejorPosicion()
+            
+        }
+        init()
     },[])
     console.log(store.nombreDeUsuario)
 
@@ -70,10 +83,10 @@ export const RankingGlobal = () => {
                                 <td>{store.posicion10?.points}</td>
                             </tr>
                             <tr className="su-posicion text-white">
-                                <th scope="row">su posicion</th>
+                                <th scope="row">{store.miPosicion}</th>
                                 {/* <td colspan="2">Larry the Bird</td> */}
-                                <td>{store.nombreDeUsuario}</td>
-                                <td>{store.mispuntos}</td>
+                                <td>{verificacionNombre()}</td>
+                                <td>{store.misPuntos}</td>
                             </tr>
                         </tbody>
                     </table>

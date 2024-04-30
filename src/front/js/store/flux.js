@@ -31,6 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			posicion10: null,
 			nombreDeUsuario: null,
 			misPuntos: null,
+			miPosicion: null,
 		},
 
 		actions: {
@@ -246,7 +247,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					console.log(response.status);
 					if (response.status == 200) {
-						setStore({ mispuntos: data.results })
+						setStore({ misPuntos: data.results })
+						setStore({ miPosicion: data.user_position })
 						console.log(data.results);
 						return true
 					}

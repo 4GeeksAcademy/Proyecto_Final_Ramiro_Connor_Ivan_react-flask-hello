@@ -135,13 +135,17 @@ def get_top_10_results():
 @api.route('/results/<string:username>', methods=['GET'])
 def get_one_users_results(username):
     user_points = Results.query.filter_by(user_name=username).with_entities(func.max(Results.points)).scalar()
+    # results_ordered = Results.query.order_by(desc(Results.points)).all()
 
     if user_points is None:
         return jsonify({"msg": "there are no points to show for this user: " +username}), 404
     
+    user_position = Results.query.filter(Results.points >= user_points).count()
+
     response_body = {
         "msg": "all ok",
-        "results": user_points
+        "results": user_points,
+        "user_position": user_position
     }
     return jsonify(response_body), 200
 

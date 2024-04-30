@@ -19,18 +19,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			question: null,
 			option1: null,
 			option2: null,
-			posicion1:null,
-			posicion2:null,
-			posicion3:null,
-			posicion4:null,
-			posicion5:null,
-			posicion6:null,
-			posicion7:null,
-			posicion8:null,
-			posicion9:null,
-			posicion10:null,
-			nombreDeUsuario:null,
-			misPuntos:null,
+			posicion1: null,
+			posicion2: null,
+			posicion3: null,
+			posicion4: null,
+			posicion5: null,
+			posicion6: null,
+			posicion7: null,
+			posicion8: null,
+			posicion9: null,
+			posicion10: null,
+			nombreDeUsuario: null,
+			misPuntos: null,
+			miPosicion: null,
 		},
 
 		actions: {
@@ -40,14 +41,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getMessage: async () => {
-				try{
+				try {
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
-				}catch(error){
+				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			},
@@ -76,10 +77,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	"password": "leo",
 			// 	"is_active": true
 			// }
-			registrarUsuario: async function (email, contraseña,nombreDeUsuario) {
+			registrarUsuario: async function (email, contraseña, nombreDeUsuario) {
 				console.log(email, contraseña, nombreDeUsuario);
-				try{
-					const response = await fetch(process.env.BACKEND_URL +'/api/user', {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + '/api/user', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'
@@ -94,12 +95,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await response.json()
 					console.log(data);
 					console.log(response.status);
-					if (response.status == 200){
+					if (response.status == 200) {
 						// localStorage.setItem("token",data.token)
 						// setStore({tokenOK : true})
-						getActions().loginUsuario(email,contraseña)
-						setStore({navigate : true})
-						setStore({nombreDeUsuario : data.user.username})
+						getActions().loginUsuario(email, contraseña)
+						setStore({ navigate: true })
+						setStore({ nombreDeUsuario: data.user.username })
 					}
 					return true
 				} catch (error) {
@@ -138,8 +139,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			loginUsuario: async function (email, contraseña) {
 				console.log(email, contraseña);
-				try{
-					const response = await fetch(process.env.BACKEND_URL +'/api/login', {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + '/api/login', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'
@@ -152,11 +153,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await response.json()
 					console.log(data);
 					console.log(response.status);
-					if (response.status == 200){
-						localStorage.setItem("token",data.token)
-						setStore({tokenOK : true})
-						setStore({navigate : true})
-						setStore({nombreDeUsuario : data.user.username})
+					if (response.status == 200) {
+						localStorage.setItem("token", data.token)
+						setStore({ tokenOK: true })
+						setStore({ navigate: true })
+						setStore({ nombreDeUsuario: data.user.username })
 						getActions().verificacionToken()
 					}
 					return true
@@ -165,48 +166,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				}
 			},
-			tokenOK: function(){
-				if (localStorage.getItem("token")!= null) {
-					setStore({tokenOK : true})
+			tokenOK: function () {
+				if (localStorage.getItem("token") != null) {
+					setStore({ tokenOK: true })
 				}
 			},
-			questionRandom: function(numberRandom){
-				fetch(process.env.BACKEND_URL +"/api/question/" +numberRandom)
-				    .then((response)=>response.json())
-				    .then((data)=>setStore({question:data.results}))
-				    .catch((error)=>console.log(error))
-					
+			questionRandom: function (numberRandom) {
+				fetch(process.env.BACKEND_URL + "/api/question/" + numberRandom)
+					.then((response) => response.json())
+					.then((data) => setStore({ question: data.results }))
+					.catch((error) => console.log(error))
+
 			},
-			wrongChoice: function(numberRandom){
-				fetch(process.env.BACKEND_URL +"/api/country/"+numberRandom)
-				    .then((response)=>response.json())
-				    .then((data)=>setStore({option1:data.results}))
-				    .catch((error)=>console.log(error))
+			wrongChoice: function (numberRandom) {
+				fetch(process.env.BACKEND_URL + "/api/country/" + numberRandom)
+					.then((response) => response.json())
+					.then((data) => setStore({ option1: data.results }))
+					.catch((error) => console.log(error))
 			},
-			wrongChoice1: function(numberRandom){
-				fetch(process.env.BACKEND_URL + "/api/country/"+numberRandom)
-				    .then((response)=>response.json())
-				    .then((data)=>setStore({option2:data.results}))
-				    .catch((error)=>console.log(error))
+			wrongChoice1: function (numberRandom) {
+				fetch(process.env.BACKEND_URL + "/api/country/" + numberRandom)
+					.then((response) => response.json())
+					.then((data) => setStore({ option2: data.results }))
+					.catch((error) => console.log(error))
 			},
 			topTenRanking: async function () {
 				console.log();
-				try{
-					const response = await fetch(process.env.BACKEND_URL+'/api/results')
+				try {
+					const response = await fetch(process.env.BACKEND_URL + '/api/results')
 					const data = await response.json()
 					console.log(data);
 					console.log(response.status);
-					if (response.status == 200){
-						setStore({posicion1:data.results[0]})
-						setStore({posicion2:data.results[1]})
-						setStore({posicion3:data.results[2]})
-						setStore({posicion4:data.results[3]})
-						setStore({posicion5:data.results[4]})
-						setStore({posicion6:data.results[5]})
-						setStore({posicion7:data.results[6]})
-						setStore({posicion8:data.results[7]})
-						setStore({posicion9:data.results[8]})
-						setStore({posicion10:data.results[9]})
+					if (response.status == 200) {
+						setStore({ posicion1: data.results[0] })
+						setStore({ posicion2: data.results[1] })
+						setStore({ posicion3: data.results[2] })
+						setStore({ posicion4: data.results[3] })
+						setStore({ posicion5: data.results[4] })
+						setStore({ posicion6: data.results[5] })
+						setStore({ posicion7: data.results[6] })
+						setStore({ posicion8: data.results[7] })
+						setStore({ posicion9: data.results[8] })
+						setStore({ posicion10: data.results[9] })
 						return true
 					}
 					return true
@@ -216,8 +217,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			verificacionToken: async function () {
-				try{
-					const response = await fetch(process.env.BACKEND_URL+'/api/protected', {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + '/api/protected', {
 						method: 'GET',
 						headers: {
 							'Content-Type': 'application/json',
@@ -227,9 +228,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await response.json()
 					console.log(data);
 					console.log(response.status);
-					if (response.status == 200){
-						setStore({nombreDeUsuario : data.user.username})
+					if (response.status == 200) {
+						setStore({ nombreDeUsuario: data.user.username })
 						return true
+					} else if (response.status == 422) {
+						localStorage.removeItem("token");
 					}
 					return true
 				} catch (error) {
@@ -238,13 +241,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			miMejorPosicion: async function () {
-				try{
-					const response = await fetch(process.env.BACKEND_URL+'/api/results/'+ getStore().nombreDeUsuario)
+				try {
+					const response = await fetch(process.env.BACKEND_URL + '/api/results/' + getStore().nombreDeUsuario)
 					const data = await response.json()
 					console.log(data);
 					console.log(response.status);
-					if (response.status == 200){
-						setStore({mispuntos : data.results})
+					if (response.status == 200) {
+						setStore({ misPuntos: data.results })
+						setStore({ miPosicion: data.user_position })
 						console.log(data.results);
 						return true
 					}

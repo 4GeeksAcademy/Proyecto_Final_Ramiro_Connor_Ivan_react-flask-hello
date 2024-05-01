@@ -141,9 +141,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-
-
-
 			loginUsuario: async function (email, contraseña) {
 				console.log(email, contraseña);
 				try {

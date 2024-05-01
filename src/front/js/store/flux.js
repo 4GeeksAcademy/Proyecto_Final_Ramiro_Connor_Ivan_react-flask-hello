@@ -19,19 +19,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 			question: null,
 			option1: null,
 			option2: null,
-			posicion1: null,
-			posicion2: null,
-			posicion3: null,
-			posicion4: null,
-			posicion5: null,
-			posicion6: null,
-			posicion7: null,
-			posicion8: null,
-			posicion9: null,
-			posicion10: null,
-			nombreDeUsuario: null,
-			misPuntos: null,
-			miPosicion: null,
+			posicion1:null,
+			posicion2:null,
+			posicion3:null,
+			posicion4:null,
+			posicion5:null,
+			posicion6:null,
+			posicion7:null,
+			posicion8:null,
+			posicion9:null,
+			posicion10:null,
+			nombreDeUsuario:null,
+			misPuntos:null,
+			errorEmail:false,
+			errorContraseña:false,
+			errorUsuarioUso:false,
+			errorEmailUso:false,
 		},
 
 		actions: {
@@ -98,9 +101,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status == 200) {
 						// localStorage.setItem("token",data.token)
 						// setStore({tokenOK : true})
-						getActions().loginUsuario(email, contraseña)
-						setStore({ navigate: true })
-						setStore({ nombreDeUsuario: data.user.username })
+						getActions().loginUsuario(email,contraseña)
+						setStore({navigate : true})
+						setStore({nombreDeUsuario : data.user.username})
+					}  else if (response.status == 420) {
+						setStore({errorUsuarioUso : true})
+					} else if (response.status == 418) {
+						setStore({errorEmailUso : true})
 					}
 					return true
 				} catch (error) {
@@ -134,9 +141,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-
-
-
 			loginUsuario: async function (email, contraseña) {
 				console.log(email, contraseña);
 				try {
@@ -159,6 +163,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ navigate: true })
 						setStore({ nombreDeUsuario: data.user.username })
 						getActions().verificacionToken()
+					} else if (response.status == 401) {
+						setStore({errorContraseña : true})
+					} else if (response.status == 404) {
+						setStore({errorEmail : true})
 					}
 					return true
 				} catch (error) {

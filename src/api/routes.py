@@ -57,11 +57,15 @@ def create_user():
     data = request.json
     print(data)
     user_email = User.query.filter_by(email=data['email']).first()
-    user_name = User.query.filter_by(email=data['username']).first()
-    if user_email or user_name: 
+    user_name = User.query.filter_by(username=data['username']).first()
+    if user_email : 
         return jsonify({
-            "msg": "email and/or username already in use" 
+            "msg": "Email already in use" 
         }), 418
+    if user_name : 
+        return jsonify({
+            "msg": "Username already in use" 
+        }), 420
     
     first_available_id = db.session.query(func.max(User.id)).scalar()
     new_user_id = (first_available_id or 0) + 1

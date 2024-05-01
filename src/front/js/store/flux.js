@@ -31,6 +31,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			posicion10:null,
 			nombreDeUsuario:null,
 			misPuntos:null,
+			errorEmail:false,
+			errorContraseña:false,
+			errorUsuarioUso:false,
+			errorEmailUso:false,
 		},
 
 		actions: {
@@ -100,6 +104,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						getActions().loginUsuario(email,contraseña)
 						setStore({navigate : true})
 						setStore({nombreDeUsuario : data.user.username})
+					}  else if (response.status == 420) {
+						setStore({errorUsuarioUso : true})
+					} else if (response.status == 418) {
+						setStore({errorEmailUso : true})
 					}
 					return true
 				} catch (error) {
@@ -158,6 +166,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({navigate : true})
 						setStore({nombreDeUsuario : data.user.username})
 						getActions().verificacionToken()
+					} else if (response.status == 401) {
+						setStore({errorContraseña : true})
+					} else if (response.status == 404) {
+						setStore({errorEmail : true})
 					}
 					return true
 				} catch (error) {

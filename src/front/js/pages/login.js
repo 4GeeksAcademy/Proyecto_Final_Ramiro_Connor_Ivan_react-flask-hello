@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import google from "../../img/googlelogin.png";
 import { gapi } from "gapi-script"
 import GoogleLogin from "react-google-login";
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+
 
 import { Context } from "../store/appContext";
 
@@ -40,23 +39,23 @@ export const Login = () => {
     }
     // fin de Google
 
-    // Formik y yup
-    const formik = useFormik({
-        initialValues: {
-            email: '',
-            contraseña: '',
-        },
-        validationSchema: Yup.object({
-            email: Yup.string().email('Invalid email address').required('Required'),
-            contraseña: Yup.string()
-                .max(20, 'Must be 20 characters or less')
-                .required('Required'),
-        }),
-        onSubmit: values => {
-            // alert(JSON.stringify(values, null, 2));
-            actions.loginUsuario(values.email, values.contraseña)
-        },
-    });
+    // Condicionales de Manejo de Error 
+
+    function errorEmail () {
+        // console.log(store.errorEmail);
+        // console.log(store.errorContraseña);
+        if (store.errorEmail == true ){
+            store.errorEmail = false
+            console.log("hola");
+            return <div className="text-danger mb-2">Email o Contraseña incorrectos </div>
+        } else if (store.errorContraseña == true) {
+            store.errorContraseña = false
+            console.log("hola");
+            return <div className="text-danger mb-2">Email o Contraseña incorrectos </div>
+        } else {
+            return null
+        }
+    }
 
     async function userLogin(e) {
         e.preventDefault()
@@ -65,6 +64,7 @@ export const Login = () => {
             navigate('/')
         }
         store.navigate = false
+        errorEmail()
         // console.log(localStorage.getItem("token"));
         console.log(store.tokenOK);
     }
@@ -73,34 +73,12 @@ export const Login = () => {
         <div className="back-texto2 p-5 h-auto ">
             <div className="cambria m-auto p-5 back-texto3" style={{ width: "500px", height: "670px" }}>
                 <h1 className="text-center mb-3">Login</h1>
-                <form className="mb-4" onSubmit={formik.handleSubmit}>
+                <form className="mb-4" onSubmit={userLogin}>
                     <p className="mb-0 login">Email:</p>
-                    {/* <input type="text" placeholder="ejemplo@gmail.com" className="w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input> */}
-                    <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.email}
-                    />
-                    {formik.touched.email && formik.errors.email ? (
-                        <div>{formik.errors.email}</div>
-                    ) : null}
+                    <input type="text" placeholder="ejemplo@gmail.com" className="w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input>
                     <p className="mb-0 login">Contraseña:</p>
-                    {/* <input type="password" className="mb-4 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br/> */}
-                    <input
-                        id="contraseña"
-                        name="contraseña"
-                        label="Password"
-                        type="password"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.contraseña}
-                    />
-                    {formik.touched.contraseña && formik.errors.contraseña ? (
-                        <div>{formik.errors.contraseña}</div>
-                    ) : null}
+                    <input type="password" className="mb-4 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br/>
+                    {errorEmail()}
                     <div className="text-center">
                         <button type="submit" className="login mb-3">Iniciar Sesion</button>
                     </div>

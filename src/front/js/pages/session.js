@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Flip } from "../component/flip";
 
 export const Session = () => {
     const { store, actions } = useContext(Context);
-    const [points, setPoints] = useState(100);
+    const [points, setPoints] = useState(0);
+    const [modal, setModal] = useState("");
 
     const handlePoints = ()=> {
         setPoints(points + 100);
@@ -63,24 +65,30 @@ export const Session = () => {
     const shuffledRespuestas = shuffleArray([...respuestas]);
 
     function shuffleArray(array) {
+
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
     }
+
+
+
     function questionCheker(id) {
         let informacion = store.question?.information;
         if (id == store.question?.country_info.id) {
-            document.getElementById("modal-header").className = "bg-success"
-            document.getElementById("titulomodal").textContent = "Nice one!"
+            console.log("Correcto");
+            // document.getElementById("modal-header").className = "bg-success"
+            // document.getElementById("titulomodal").textContent = "Nice one!"
             handlePoints();
         }
         else {
-            document.getElementById("modal-header").className = "bg-danger"
-            document.getElementById("titulomodal").textContent = "Wrong!"
+            console.log("Incorrecto");
+            // document.getElementById("modal-header").className = "bg-danger"
+            // document.getElementById("titulomodal").textContent = "Wrong!"
         }
-        document.getElementById("modal-texto").textContent = informacion
+        // document.getElementById("modal-texto").textContent = informacion
     }
 
     useEffect(() => {
@@ -93,7 +101,8 @@ export const Session = () => {
     return (
         <div className="SessionContainer cambria">
             <div className="container text-center">
-                <img className="border border-dark rounded my-2" src={store.question?.image} style={{ width: 450, height: 600 }} alt="Country Scene" />
+                
+                <Flip/>
             </div>
             <div className="QuestionHolder text-center">
                 <h1 id="anunciante">¿A qué país pertenece esta imagen?</h1>
@@ -106,24 +115,24 @@ export const Session = () => {
 
                 ))}
             </div>
-            {/* ---------modal */}
-            <div className="modal fade" id="infoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="titulomodal" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header" id="modal-header">
-                            <h1 className="modal-title fs-5" id="titulomodal"></h1>
-                        </div>
-                        <div className="modal-body" >
-                            <p id="modal-texto">
-                                ""
-                            </p>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={inicio}>Understood!</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 };
+            // {/* ---------modal */}
+            // <div className="modal fade" id="infoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="titulomodal" aria-hidden="true">
+            //     <div className="modal-dialog">
+            //         <div className="modal-content">
+            //             <div className="modal-header" id="modal-header">
+            //                 <h1 className="modal-title fs-5" id="titulomodal"></h1>
+            //             </div>
+            //             <div className="modal-body" >
+            //                 <p id="modal-texto">
+            //                     ""
+            //                 </p>
+            //             </div>
+            //             <div className="modal-footer">
+            //                 <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={inicio}>Understood!</button>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>

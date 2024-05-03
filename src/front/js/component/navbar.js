@@ -25,7 +25,9 @@ export const Navbar = () => {
 	let parteEspecifica = null;
 	let parteEspecifica2 = null;
 	let parteEspecifica3 = null;
-	let libritoBoton = null;
+	let ranking_global = <Link to="/ranking-global"><a className="text-black text-decoration-none cambria navbar-text p-2">Ranking Global</a></Link>
+	
+	let libritoBoton = <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>;
 
 	if (location.pathname === '/') {
 		libritoBoton = <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
@@ -52,6 +54,9 @@ export const Navbar = () => {
 							</li>
 							<li className="nav-item">
 								{parteEspecifica3}
+							</li>
+							<li className="nav-item ">
+							{ranking_global}
 							</li>
 						</ul>
 					</div>

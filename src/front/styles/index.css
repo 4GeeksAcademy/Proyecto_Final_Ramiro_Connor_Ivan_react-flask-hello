@@ -68,6 +68,9 @@
 .navbar-text{
     font-size: 20px;
 }
+a{
+    text-decoration: none;
+}
 .creadores-posicion {
     position: absolute;
     font-family: "Permanent Marker", cursive;

@@ -298,15 +298,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// fetch function from Connor to get info in both languages
-			// fetchCountryInfo: async function () {
-			// 	try {
-			// 		const response = await fetch(process.env.BACKEND_URL + 'api/question/2');
-			// 		const jsonData = await response.json();
-			// 		setStore({ fetchedData: jsonData.results }); 
-			// 	} catch (error) {
-			// 		console.error("Error fetching data:", error);
-			// 	}
-			// }			
+			fetchCountryInfo: async function () {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + 'api/question/2');
+					const jsonData = await response.json();
+					setStore({ fetchedData: jsonData.results }); 
+				} catch (error) {
+					console.error("Error fetching data:", error);
+				}
+			}			
 
 		}
 	};

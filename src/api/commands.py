@@ -86,7 +86,7 @@ def setup_commands(app):
                 Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/greece_flag", name="Greece"),
                 Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/india_flag", name="India"),
                 Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/italy_flag", name="Italy"),
-                Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/mexico_flag", name="Mexico"),
+                Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/mexico_flag_fixed", name="Mexico"),
                 Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/peru_flag", name="Peru"),
                 Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/united_kingdom_flag", name="United Kingdom"),
                 Country(image="https://res.cloudinary.com/dq4dla9gj/image/upload/united_states_flag", name="United States"),

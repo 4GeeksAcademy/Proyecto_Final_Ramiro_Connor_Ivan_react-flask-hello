@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { useNavigate } from 'react-router-dom';
 import Confetti from 'react-confetti';
 import nube from "../../img/nubepngwing.com.png"
+import { useTranslation, Trans } from 'react-i18next';
 
 export const Session = () => {
     const { store, actions } = useContext(Context);
@@ -17,6 +18,7 @@ export const Session = () => {
     const [botonClickeado, setBotonClickeado] = useState(false);
     const [flash, setFlash] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
+    const { t, i18n } = useTranslation();
 
     const handleClick = () => {
         // Realiza las acciones que necesites al hacer clic en el botón
@@ -127,9 +129,9 @@ export const Session = () => {
 
     function questionCheker(id) {
         if (id == store.question?.country_info.id) {
-            setResultado("Correcto!");
+            setResultado(`${t('session.part2')}`);
             setAvanzar(true);
-            setBoton('Siguiente')
+            setBoton(`${t('session.part4')}`)
             setBg("bg-success")
             handlePoints();
             botonClick()
@@ -137,9 +139,9 @@ export const Session = () => {
             return true
         }
         else {
-            setResultado("Incorrecto");
+            setResultado(`${t('session.part3')}`);
             setAvanzar(false)
-            setBoton('Volver')
+            setBoton(`${t('session.part5')}`)
             setBg("bg-danger")
             botonClick()
             handleClick()
@@ -169,7 +171,8 @@ export const Session = () => {
                         <h3 className="m-0">{resultado}</h3>
                     </div>
                     <div>
-                        <p className="m-3">{store.question?.information}</p>
+                        {/* <p className="m-3">{store.question?.information}</p> */}
+                        <p className="m-3">{t(`information.part${store.question?.id}`)}</p>
                     </div>
                     <div className="footer mt-auto py-3">
                         <button type="button" className="btn btn-primary" onClick={() => avanzar ? siguiente() : volverHome()}>{boton}</button>
@@ -181,7 +184,7 @@ export const Session = () => {
                     <img src={nube} className="mt-3 mx-auto" style={{ width: 300, height: 200 }} />
                     {showConfetti && <Confetti />}
                     <div className="puntos">
-                        <h3>Puntos:</h3>
+                        <h3>{t('session.part6')}:</h3>
                         <p>{points}</p>
                     </div>
                 </div>

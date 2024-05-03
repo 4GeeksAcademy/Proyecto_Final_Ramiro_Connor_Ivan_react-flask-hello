@@ -8,10 +8,11 @@ import imgMundi from "../../img/cropped-footer-foto1.png"
 import imgLugares2 from "../../img/pngwing.com (2).png"
 import imgRanking from "../../img/klipartz.com (2).png"
 import { Link } from "react-router-dom";
+import { useTranslation, Trans } from 'react-i18next';
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-
+	const { t, i18n } = useTranslation();
 
 	return (
 		<div className="text-center ">
@@ -21,7 +22,7 @@ export const Home = () => {
 					<img src={portada} className="w-100" />
 					<div>
 						<Link to="/demo">
-							<button class="boton">JUGAR</button>
+							<button class="boton">{t('home.part1')}</button>
 						</Link>
 					</div>
 				</div>
@@ -30,8 +31,8 @@ export const Home = () => {
 				<div className=" back-texto3">
 					<div className="row align-items-center pading-texto">
 						<div className="pading-texto col-lg-6 col-md-12 col-sm-12">
-							<h1 className="cambria negrita">¿Que es GuessNation?</h1>
-							<p className="cambria negrita texto">"GuessNation" es un juego de trivia geográfica en el que los jugadores deben adivinar la ubicación de lugares icónicos del mundo. El juego presenta a los jugadores una serie de imágenes de lugares famosos, como monumentos, edificios históricos, paisajes naturales y sitios turísticos de renombre mundial.</p>
+							<h1 className="cambria negrita">{t('home.part2')}</h1>
+							<p className="cambria negrita texto">{t('home.part3')}</p>
 						</div>
 						<div className="col-lg-6 col-md-12 col-sm-12">
 							<img src={imgMundi} className="w-100" />
@@ -46,9 +47,9 @@ export const Home = () => {
 						<img src={imgLugares2} className="w-100" />
 					</div>
 					<div className="col-lg-6 col-md-12 col-sm-12">
-						<h1 className="cambria negrita">¿Como Jugar?</h1>
+						<h1 className="cambria negrita">{t('home.part4')}</h1>
 						<p className="cambria negrita texto">
-							En "GuessNation" verás fotos de lugares interesantes de todo el mundo, como la Torre Eiffel o el Monumento a la Libertad. Tu trabajo es seleccionar en qué país esta ubicada la imagen. Si adivinas correctamente, ¡ganarás puntos y te convertirás en un experto en geografía!
+						{t('home.part5')}
 						</p>
 					</div>
 				</div>
@@ -60,7 +61,7 @@ export const Home = () => {
 					<div className="pading-texto col-lg-6 col-md-12 col-sm-12">
 						<h1 className="cambria negrita">Ranking</h1>
 						<p className="cambria negrita texto">
-							En "GuessNations", cada vez que adivinas correctamente la ubicación de un lugar famoso, ganas un punto. ¡Podrás mantener una racha de victorias para mostrar tu habilidad y conocimiento geográfico! Compite contra jugadores de todo el mundo y sube en el ranking global. ¿Estás listo para aceptar el desafío? ¡Únete a GuessNations y comienza tu viaje por el mundo hoy mismo!
+							{t('home.part6')}
 						</p>
 					</div>
 					<div className="col-lg-6 col-md-12 col-sm-12">

@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { useTranslation, Trans } from 'react-i18next';
 export const Session = () => {
     const { store, actions } = useContext(Context);
+    const { t, i18n } = useTranslation();
     function inicio(){
         let randNum1 = Math.floor(Math.random() * 10) + 1;
         let randNum2 = Math.floor(Math.random() * 15) + 1;
@@ -31,11 +33,11 @@ export const Session = () => {
 
         if(id== store.question?.country_info.id){
             document.getElementById("modal-header").className="bg-success"
-            document.getElementById("titulomodal").textContent="Nice one!"
+            document.getElementById("titulomodal").textContent=`${t('session.part2')}`
         }
         else{
             document.getElementById("modal-header").className="bg-danger"
-            document.getElementById("titulomodal").textContent="Wrong!"
+            document.getElementById("titulomodal").textContent=`${t('session.part3')}`
         }
         console.log(id)
 
@@ -48,7 +50,7 @@ export const Session = () => {
                 <img className="border border-dark rounded my-2" src={store.question?.image} style={{width:450, height:600}} alt="Country Scene"/>
             </div>
             <div className="QuestionHolder text-center">
-                <h1 id="anunciante">¿A qué país pertenece esta imagen?</h1>
+                <h1 id="anunciante">{t('session.part1')}</h1>
             </div>
             <div className="FlagWrapper d-flex flex-row justify-content-center ">
                 {shuffledRespuestas.map((respuesta, index) => (
@@ -71,7 +73,7 @@ export const Session = () => {
                     </p>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={inicio}>Understood!</button>
+                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={inicio}>{t('session.part4')}</button>
                 </div>
                 </div>
             </div>

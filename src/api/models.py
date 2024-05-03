@@ -52,6 +52,7 @@ class Results(db.Model):
     # losses = db.Column(db.Integer)
     user_name = db.Column(db.String, db.ForeignKey('user.username'), nullable=False)
     user = db.relationship('User', backref='results')
+    
 
     def __repr__(self):
         return f'<Results {self.id}>'
@@ -90,6 +91,8 @@ class Question(db.Model):
     information = db.Column(db.String(450), nullable=False)
     country_id = db.Column(db.Integer, db.ForeignKey('country.id'), nullable=False)
     country = db.relationship(Country)
+    # language = dbColumn
+    # //add column for language (boolean or number) when english is selected send petition 
 
     def __repr__(self):
         return f'<Question {self.id}>'

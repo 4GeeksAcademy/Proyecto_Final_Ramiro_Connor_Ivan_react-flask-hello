@@ -4,10 +4,17 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import logo from "../../img/klipartz.com.png";
 import { useLocation } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
+
+const lngs = {
+	en: { nativeName: 'English' },
+	es: { nativeName: 'Español' }
+};
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const location = useLocation();
+	const { t, i18n } = useTranslation();
 
 	function cerrarSesion() {
 		localStorage.removeItem("token");
@@ -19,12 +26,13 @@ export const Navbar = () => {
 	let parteEspecifica2 = null;
 	let parteEspecifica3 = null;
 	let ranking_global = <Link to="/ranking-global"><a className="text-black text-decoration-none cambria navbar-text p-2">Ranking Global</a></Link>
-	
+
 	let libritoBoton = <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>;
 
 	if (location.pathname === '/') {
-		parteEspecifica = <a href="#queEsGuessNation" className="text-black text-decoration-none cambria navbar-text p-2">¿Que es GuessNation?</a>;
-		parteEspecifica2 = <a href="#comoJugar" className="text-black text-decoration-none cambria navbar-text p-2">¿Como Jugar?</a>;
+		libritoBoton = <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+		parteEspecifica = <a href="#queEsGuessNation" className="text-black text-decoration-none cambria navbar-text p-2">{t('navbar.part1')}</a>;
+		parteEspecifica2 = <a href="#comoJugar" className="text-black text-decoration-none cambria navbar-text p-2">{t('navbar.part2')}</a>;
 		parteEspecifica3 = <a href="#ranking" className="text-black text-decoration-none cambria navbar-text p-2">Ranking</a>;
 	}
 
@@ -39,19 +47,27 @@ export const Navbar = () => {
 					<div className="collapse navbar-collapse " id="navbarNavDropdown">
 						<ul className="navbar-nav">
 							<li className="nav-item">
-							{parteEspecifica}
+								{parteEspecifica}
 							</li>
 							<li className="nav-item">
-							{parteEspecifica2}
+								{parteEspecifica2}
 							</li>
 							<li className="nav-item">
-							{parteEspecifica3}
+								{parteEspecifica3}
 							</li>
 							<li className="nav-item ">
-							{ranking_global}
+								{ranking_global}
 							</li>
 						</ul>
 					</div>
+				</div>
+				<div className="position-absolute top-50 start-50 translate-middle">
+					{Object.keys(lngs).map((lng) => (
+						<button key={lng} style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }} type="submit" onClick={() => i18n.changeLanguage(lng)}>
+							{lng === 'es' && <img src="https://flagsapi.com/ES/shiny/64.png" alt="Spain Flag" />}
+							{lng === 'en' && <img src="https://flagsapi.com/GB/shiny/64.png" alt="UK Flag" />}
+						</button>
+					))}
 				</div>
 				<div className="ml-auto">
 					{store.tokenOK ? <div className="btn-group dropstart">
@@ -63,7 +79,7 @@ export const Navbar = () => {
 							<li><button className="btn btn-danger" onClick={cerrarSesion}>Cerrar sesión</button></li>
 						</ul>
 					</div> : <Link to="/login">
-						<button className="btn back-texto3 m-2 cambria iniciar-sesion">Iniciar Sesión / Registrarse</button>
+						<button className="btn back-texto3 m-2 cambria iniciar-sesion">{t('navbar.part3')}</button>
 					</Link>}
 				</div>
 			</div>

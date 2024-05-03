@@ -187,7 +187,7 @@ export const Session = () => {
                 </div>
             </div>
             <div className="QuestionHolder text-center">
-                <h1 id="anunciante">¿A qué país pertenece esta imagen?</h1>
+                <h1 id="anunciante">{t('session.part1')}</h1>
             </div>
             <div className="FlagWrapper d-flex flex-row justify-content-center ">
                 {shuffledRespuestas.map((respuesta, index) => (

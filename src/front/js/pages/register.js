@@ -50,16 +50,16 @@ export const Register = () => {
             userName: '',
         },
         validationSchema: Yup.object({
-            email: Yup.string().email('Invalid email address').required('Obligatorio'),
+            email: Yup.string().email(`${t('register.part9')}`).required(`${t('register.part10')}`),
             userName: Yup.string()
-                .max(20, 'No puede superar los 20 caracteres')
-                .min(5, 'Minimo de 5 caracteres')
-                .required('Obligatorio'),
+                .max(20, `${t('register.part13')}`)
+                .min(5, `${t('register.part14')}`)
+                .required(`${t('register.part10')}`),
             contraseña: Yup.string()
-                .max(20, 'Must be 20 characters or less')
-                .min(5, 'Minimo de 5 caracteres')
-                .matches(/[A-Z]/, 'Debe contener al menos una letra mayúscula')
-                .required('Obligatorio'),
+                .max(20, `${t('register.part13')}`)
+                .min(5, `${t('register.part14')}`)
+                .matches(/[A-Z]/, `${t('register.part15')}`)
+                .required(`${t('register.part10')}`),
         }),
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
@@ -83,10 +83,10 @@ export const Register = () => {
         // console.log(store.errorUsuarioUso);
         if (store.errorEmailUso == true ){
             store.errorEmailUso = false
-            return <div className="text-danger mb-2">El Email ya tiene una cuenta asignada </div>
+            return <div className="text-danger mb-2">{t('register.part11')}</div>
         } else if (store.errorUsuarioUso == true) {
             store.errorUsuarioUso = false
-            return <div className="text-danger mb-2">El Nombre de usuario ya esta en uso </div>
+            return <div className="text-danger mb-2">{t('register.part12')}</div>
         } else {
             return null
         }
@@ -110,7 +110,7 @@ export const Register = () => {
     return (
         <div className="back-texto2 p-5 h-auto ">
             <div className="cambria m-auto p-5 back-texto3" style={{ width: "500px", height: "670px" }}>
-                <h1 className="text-center mb-3">Registrarse</h1>
+                <h1 className="text-center mb-3">{t('register.part1')}</h1>
                 <form className="mb-2" onSubmit={formik.handleSubmit}>
                     <p className="mb-0 login">Email:</p>
                     {/* <input type="text" placeholder="ejemplo@gmail.com" className="w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input> */}
@@ -126,7 +126,7 @@ export const Register = () => {
                     {formik.touched.email && formik.errors.email ? (
                         <div className="text-danger">{formik.errors.email}</div>
                     ) : null}
-                    <p className="mb-0 login">Nombre de Usuario:</p>
+                    <p className="mb-0 login">{t('register.part3')}:</p>
                     {/* <input type="text" className="w-100 mb-4 login" onChange={event => setNombreDeUsuario(event.target.value)}></input> */}
                     <input
                         id="userName"
@@ -139,7 +139,7 @@ export const Register = () => {
                     {formik.touched.userName && formik.errors.userName ? (
                         <div className="text-danger">{formik.errors.userName}</div>
                     ) : null}
-                    <p className="mb-0 login">Contraseña:</p>
+                    <p className="mb-0 login">{t('register.part4')}:</p>
                     {/* <input type="password" className="mb-4 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br/> */}
                     <input
                         id="contraseña"

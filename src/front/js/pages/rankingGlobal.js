@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import podio from "../../img/podium-7920733_960_720.webp"
-
+import { useTranslation, Trans } from 'react-i18next';
 import { Context } from "../store/appContext";
 
 export const RankingGlobal = () => {
     const { store, actions } = useContext(Context);
-    
+    const { t, i18n } = useTranslation();
+
     function verificacionNombre () {
         if (store.nombreDeUsuario == null ){
-            return "Inicia Sesión o Registrate para participar del Ranking Global"
+            return `${t('ranking.part1')}`
         } else {
             return store.nombreDeUsuario
         }
@@ -41,9 +42,9 @@ export const RankingGlobal = () => {
                     <table className="table back-texto3">
                         <thead>
                             <tr>
-                                <th scope="col">Posicion</th>
-                                <th scope="col">Nombre de usuario</th>
-                                <th scope="col">Puntuacion</th>
+                                <th scope="col">{t('ranking.part2')}</th>
+                                <th scope="col">{t('ranking.part3')}</th>
+                                <th scope="col">{t('ranking.part4')}</th>
                             </tr>
                         </thead>
                         <tbody>

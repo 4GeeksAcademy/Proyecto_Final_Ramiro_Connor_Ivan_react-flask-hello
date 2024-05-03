@@ -7,9 +7,9 @@ import { useLocation } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 
 const lngs = {
-    en: { nativeName: 'English' },
-    es: { nativeName: 'Español' }
-  };
+	en: { nativeName: 'English' },
+	es: { nativeName: 'Español' }
+};
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
@@ -26,7 +26,7 @@ export const Navbar = () => {
 	let parteEspecifica2 = null;
 	let parteEspecifica3 = null;
 	let ranking_global = <Link to="/ranking-global"><a className="text-black text-decoration-none cambria navbar-text p-2">Ranking Global</a></Link>
-	
+
 	let libritoBoton = <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>;
 
 	if (location.pathname === '/') {
@@ -56,15 +56,16 @@ export const Navbar = () => {
 								{parteEspecifica3}
 							</li>
 							<li className="nav-item ">
-							{ranking_global}
+								{ranking_global}
 							</li>
 						</ul>
 					</div>
 				</div>
-				<div>
+				<div className="position-absolute top-50 start-50 translate-middle">
 					{Object.keys(lngs).map((lng) => (
 						<button key={lng} style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }} type="submit" onClick={() => i18n.changeLanguage(lng)}>
-							{lngs[lng].nativeName}
+							{lng === 'es' && <img src="https://flagsapi.com/ES/shiny/64.png" alt="Spain Flag" />}
+							{lng === 'en' && <img src="https://flagsapi.com/GB/shiny/64.png" alt="UK Flag" />}
 						</button>
 					))}
 				</div>

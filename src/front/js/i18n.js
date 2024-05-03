@@ -47,7 +47,8 @@ i18n
                         part3: "Don't have an Account?",
                         part4: "Sign Up",
                         part5: "Forgot Password?",
-                        part6: "Or"
+                        part6: "Or",
+                        part7: "Wrong email or Password"
                     },
                     register: {
                         part1: "Sign Up",
@@ -57,14 +58,28 @@ i18n
                         part5: "Sign Up",
                         part6: "Already have an account?",
                         part7: "Log In",
-                        part8: "Or"
+                        part8: "Or",
+                        part9: "Invalid email address",
+                        part10: "Required",
+                        part11: "The Email is already associated with an account",
+                        part12: "The username is already in use",
+                        part13: "Cannot exceed 20 characters",
+                        part14: "Minimum of 5 characters",
+                        part15: "Must contain at least one uppercase letter"
                     },
                     session: {
                         part1: "Which country does this place belong to?",
                         part2: "Nice one!",
                         part3: "Close one! Try again",
                         part4: "Understood!"
+                    },
+                    ranking: {
+                        part1: "Sign in or Register to participate in the Global Ranking",
+                        part2: "Position",
+                        part3: "Username",
+                        part4: "Score"
                     }
+                    
                 }
             },
             es: {
@@ -97,7 +112,8 @@ i18n
                         part3: "¿No tienes Cuenta?",
                         part4: "Registrarse",
                         part5: "¿Olvidaste la contraseña?",
-                        part6: "O"
+                        part6: "O",
+                        part7: "Email o Contraseña incorrectos"
                     },
                     register: {
                         part1: "Registrarse",
@@ -107,13 +123,26 @@ i18n
                         part5: "Regístrate",
                         part6: "¿Ya tienes una cuenta?",
                         part7: "Iniciar Sesión",
-                        part8: "O"
+                        part8: "O",
+                        part9: "Dirección de correo electrónico no válida",
+                        part10: "Obligatorio",
+                        part11: "El Email ya tiene una cuenta asignada",
+                        part12: "El Nombre de usuario ya esta en uso",
+                        part13: "No puede superar los 20 caracteres",
+                        part14: "Minimo de 5 caracteres",
+                        part15: "Debe contener al menos una letra mayúscula"
                     },
                     session: {
                         part1: "¿A qué país pertenece esta imagen?",
                         part2: "Bien hecho!",
                         part3: "¡Casi! Inténtalo de nuevo",
                         part4: "¡Entendido!"
+                    },
+                    ranking: {
+                        part1: "Inicia Sesión o Registrate para participar del Ranking Global",
+                        part2: "Posicion",
+                        part3: "Nombre de usuario",
+                        part4: "Puntuacion"
                     }
                 }
             }

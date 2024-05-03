@@ -22,7 +22,7 @@ export const Home = () => {
 					<img src={portada} className="w-100" />
 					<div>
 						<Link to="/demo">
-							<button class="boton">{t('home.part1')}</button>
+							<button className="boton">{t('home.part1')}</button>
 						</Link>
 					</div>
 				</div>

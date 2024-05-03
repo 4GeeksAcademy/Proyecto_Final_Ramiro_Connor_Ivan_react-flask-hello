@@ -1,23 +1,60 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
-import { Flip } from "../component/flip";
+import { useNavigate } from 'react-router-dom';
+import Confetti from 'react-confetti';
+import nube from "../../img/nubepngwing.com.png"
 
 export const Session = () => {
     const { store, actions } = useContext(Context);
     const [points, setPoints] = useState(0);
-    const [modal, setModal] = useState("");
+    const [resultado, setResultado] = useState("");
+    const [boton, setBoton] = useState("");
+    const [bg, setBg] = useState("");
+    const [avanzar, setAvanzar] = useState(false);
+    const [flipped, setFlipped] = useState(false);
+    const [showBackText, setShowBackText] = useState(false);
+    const navigate = useNavigate();
+    const [botonClickeado, setBotonClickeado] = useState(false);
+    const [flash, setFlash] = useState(false);
+    const [showConfetti, setShowConfetti] = useState(false);
 
-    const handlePoints = ()=> {
-        setPoints(points + 100);
-        console.log(points);
+    const handleClick = () => {
+        // Realiza las acciones que necesites al hacer clic en el botón
+        // Luego, establece el estado de botonClickeado en true para deshabilitar el botón
+        botonClickeado ? setBotonClickeado(false) : setBotonClickeado(true)
     };
 
+    const toggleFlip = () => {
+        setFlipped(!flipped); // Invertir el valor de flipped
+    };
+
+    const toggleBackText = () => {
+        setShowBackText(!showBackText); // Invertir el estado para mostrar u ocultar el texto en la parte trasera
+    };
+
+
+    const handlePoints = () => {
+        setPoints(points + 100);
+        console.log(points);
+        // Mostrar la animación de confeti
+        setShowConfetti(true);
+        // Ocultar la animación de confeti después de un tiempo
+        setTimeout(() => {
+            setShowConfetti(false);
+        }, 3000); // Duración de la animación en milisegundos
+    };
+
+
     async function inicio() {
+
+
+
+
         let num1 = Math.floor(Math.random() * 20) + 1;
         let num2;
         do {
             num2 = Math.floor(Math.random() * 30) + 1;
-        } while (num2 === store.question?.country_info.id );
+        } while (num2 === store.question?.country_info.id);
         let num3;
         do {
             num3 = Math.floor(Math.random() * 30) + 1;
@@ -34,7 +71,7 @@ export const Session = () => {
         //         randNum1 = Math.floor(Math.random() * 20) + 1;
         //     }
         //     previousIds.push(randNum1);
-            // actions.questionRandom(randNum1);
+        // actions.questionRandom(randNum1);
 
         //     let randNum2 = Math.floor(Math.random() * 30) + 1;
         //     while (previousIds.includes(randNum2) || randNum2 === randNum1) {
@@ -72,44 +109,89 @@ export const Session = () => {
         }
         return array;
     }
+    function botonClick() {
+        toggleFlip()
+        toggleBackText()
+    }
+    function siguiente() {
+        inicio()
+        toggleFlip()
+        toggleBackText()
+        handleClick()
+    }
+    function volverHome() {
+        navigate('/')
+    }
 
 
 
     function questionCheker(id) {
-        let informacion = store.question?.information;
         if (id == store.question?.country_info.id) {
-            console.log("Correcto");
-            // document.getElementById("modal-header").className = "bg-success"
-            // document.getElementById("titulomodal").textContent = "Nice one!"
+            setResultado("Correcto!");
+            setAvanzar(true);
+            setBoton('Siguiente')
+            setBg("bg-success")
             handlePoints();
+            botonClick()
+            handleClick()
+            return true
         }
         else {
-            console.log("Incorrecto");
-            // document.getElementById("modal-header").className = "bg-danger"
-            // document.getElementById("titulomodal").textContent = "Wrong!"
+            setResultado("Incorrecto");
+            setAvanzar(false)
+            setBoton('Volver')
+            setBg("bg-danger")
+            botonClick()
+            handleClick()
+            if (store.nombreDeUsuario !== null) {
+                actions.postPuntos(store.nombreDeUsuario, points)
+            }
+            return false
         }
-        // document.getElementById("modal-texto").textContent = informacion
     }
 
     useEffect(() => {
         inicio();
         
-
     }, []);
 
 
     return (
-        <div className="SessionContainer cambria">
-            <div className="container text-center">
-                
-                <Flip/>
+        <div className="SessionContainer cambria row">
+            <div className="col-4"></div>
+            {/* <div className="container text-center {`contenedor ${flipped ? "flipped" : ""`}"> */}
+            <div className={`contenedor imagen col-4  flipper ${flipped ? "flipped" : ""}`}>
+                <img className="border border-dark rounded my-2 m-auto front" src={store.question?.image} style={{ width: 450, height: 600 }} alt="Country Scene" />
+                {/* <Flip/> */}
+                <div className={`texto-trasero back p-0  mt-2  d-flex flex-column ${showBackText ? "show" : ""}`} style={{ width: 450, height: 600 }}>
+                    {/* Aquí va tu texto para la parte trasera */}
+                    <div className={`w-100 p-2 mb-4 ${bg}`}>
+                        <h3 className="m-0">{resultado}</h3>
+                    </div>
+                    <div>
+                        <p className="m-3">{store.question?.information}</p>
+                    </div>
+                    <div className="footer mt-auto py-3">
+                        <button type="button" className="btn btn-primary" onClick={() => avanzar ? siguiente() : volverHome()}>{boton}</button>
+                    </div>
+                </div>
+            </div>
+            <div className="col-4">
+                <div className={`text-center nube ${flash ? 'confetti' : ''}`}>
+                    <img src={nube} className="mt-3 mx-auto" style={{ width: 300, height: 200 }} />
+                    {showConfetti && <Confetti />}
+                    <div className="puntos">
+                        <h3>Puntos:</h3>
+                        <p>{points}</p>
+                    </div>
+                </div>
             </div>
             <div className="QuestionHolder text-center">
                 <h1 id="anunciante">¿A qué país pertenece esta imagen?</h1>
             </div>
             <div className="FlagWrapper d-flex flex-row justify-content-center ">
                 {shuffledRespuestas.map((respuesta, index) => (
-                    <button key={index} className={`buttonStyle mx-3 border border-dark rounded my-2`} data-bs-toggle="modal" data-bs-target="#infoModal" style={{ width: 80, height: 64 }} onClick={() => questionCheker(respuesta.id)}>
+                    <button key={index} className={`buttonStyle mx-3 border border-dark rounded my-2`} style={{ width: 80, height: 64 }} disabled={botonClickeado} onClick={() => questionCheker(respuesta.id)}>
                         <img src={respuesta.imagen} alt={respuesta.nombre} />
                     </button>
 
@@ -118,21 +200,3 @@ export const Session = () => {
         </div>
     );
 };
-            // {/* ---------modal */}
-            // <div className="modal fade" id="infoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="titulomodal" aria-hidden="true">
-            //     <div className="modal-dialog">
-            //         <div className="modal-content">
-            //             <div className="modal-header" id="modal-header">
-            //                 <h1 className="modal-title fs-5" id="titulomodal"></h1>
-            //             </div>
-            //             <div className="modal-body" >
-            //                 <p id="modal-texto">
-            //                     ""
-            //                 </p>
-            //             </div>
-            //             <div className="modal-footer">
-            //                 <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={inicio}>Understood!</button>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </div>

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Confetti from 'react-confetti';
 import nube from "../../img/nubepngwing.com.png"
 import { useTranslation, Trans } from 'react-i18next';
+import Counter from "../component/counter";
 
 export const Session = () => {
     const { store, actions } = useContext(Context);
@@ -160,26 +161,31 @@ export const Session = () => {
 
     return (
         <div className="SessionContainer cambria row">
-            <div className="col-4"></div>
-            {/* <div className="container text-center {`contenedor ${flipped ? "flipped" : ""`}"> */}
-            <div className={`contenedor imagen col-4  flipper ${flipped ? "flipped" : ""}`}>
-                <img className="border border-dark rounded my-2 m-auto front" src={store.question?.image} style={{ width: 450, height: 600 }} alt="Country Scene" />
-                {/* <Flip/> */}
-                <div className={`texto-trasero back p-0  mt-2  d-flex flex-column ${showBackText ? "show" : ""}`} style={{ width: 450, height: 600 }}>
-                    {/* Aquí va tu texto para la parte trasera */}
-                    <div className={`w-100 p-2 mb-4 ${bg}`}>
-                        <h3 className="m-0">{resultado}</h3>
-                    </div>
-                    <div>
-                        {/* <p className="m-3">{store.question?.information}</p> */}
-                        <p className="m-3">{t(`information.part${store.question?.id}`)}</p>
-                    </div>
-                    <div className="footer mt-auto py-3">
-                        <button type="button" className="btn btn-primary" onClick={() => avanzar ? siguiente() : volverHome()}>{boton}</button>
+            <div className="col-4 d-flex justify-content-end align-items-center">
+                <div style={{ marginRight: '20px' }}>
+                <Counter />
+                </div>
+            </div>
+            <div className="col-4">
+                <div className="d-flex justify-content-center">
+                    <div className={`contenedor imagen ${flipped ? "flipped" : ""}`}>
+                        <img className="border border-dark rounded my-2 m-auto front" src={store.question?.image} style={{ width: 450, height: 600 }} alt="Country Scene" />
+                        <div className={`texto-trasero back p-0  mt-2  d-flex flex-column ${showBackText ? "show" : ""}`} style={{ width: 450, height: 600 }}>
+                            <div className={`w-100 p-2 mb-4 ${bg}`}>
+                                <h3 className="m-0">{resultado}</h3>
+                            </div>
+                            <div>
+                                <p className="m-3">{t(`information.part${store.question?.id}`)}</p>
+                            </div>
+                            <div className="footer mt-auto py-3">
+                                <button type="button" className="btn btn-primary" onClick={() => avanzar ? siguiente() : volverHome()}>{boton}</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="col-4">
+                {/* Place the nube component on the right */}
                 <div className={`text-center nube ${flash ? 'confetti' : ''}`}>
                     <img src={nube} className="mt-3 mx-auto" style={{ width: 300, height: 200 }} />
                     {showConfetti && <Confetti />}
@@ -197,9 +203,9 @@ export const Session = () => {
                     <button key={index} className={`buttonStyle mx-3 border border-dark rounded my-2`} style={{ width: 80, height: 64 }} disabled={botonClickeado} onClick={() => questionCheker(respuesta.id)}>
                         <img src={respuesta.imagen} alt={respuesta.nombre} />
                     </button>
-
                 ))}
             </div>
         </div>
     );
+    
 };

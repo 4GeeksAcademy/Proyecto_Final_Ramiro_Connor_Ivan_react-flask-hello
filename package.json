@@ -83,6 +83,7 @@
 		"i18next-browser-languagedetector": "^7.2.1",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
+		"react-circular-progressbar": "^2.1.0",
 		"react-confetti": "^6.1.0",
 		"react-dom": "^16.8.4",
 		"react-google-login": "^5.2.2",

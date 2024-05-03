@@ -241,6 +241,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return true
 					} else if (response.status == 422) {
 						localStorage.removeItem("token");
+					}else if (response.status == 401) {
+						localStorage.removeItem("token");
+						window.location.reload()
 					}
 					return true
 				} catch (error) {
@@ -266,6 +269,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				}
 			},
+			postPuntos: async function (username, puntos) {
+				console.log(username, puntos);
+				try {
+					const response = await fetch(process.env.BACKEND_URL + '/api/results', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							"username": username,
+							"points": puntos,
+						})
+					})
+					const data = await response.json()
+					console.log(data);
+					console.log(response.status);
+					if (response.status == 200) {
+						
+					} else {
+						
+					} 
+					return true
+				} catch (error) {
+					console.error(err)
+
+				}
+			},
+
 			// fetch function from Connor to get info in both languages
 			// fetchCountryInfo: async function () {
 			// 	try {

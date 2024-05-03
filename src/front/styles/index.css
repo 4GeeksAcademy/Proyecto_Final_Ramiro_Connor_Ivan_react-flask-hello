@@ -251,3 +251,105 @@ a{
         padding: 15px;
     }
 }
+.contenedor {
+    position: relative;
+    perspective: 1000px; /* Define la perspectiva para el efecto de 3D */
+}
+.imagen.flipped {
+    transform: rotateY(180deg); /* Rota la imagen 180 grados en el eje Y */
+}
+.imagen {
+    width: 450px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: 630px;
+    margin: auto;
+    transition: transform 0.5s; /* Agrega una transición suave al transformar */
+}
+.texto-trasero {
+    /* Estilos base para el texto en la parte trasera */
+    display: none; /* Ocultar el texto por defecto */
+    position: absolute; /* Posición absoluta para superponerlo sobre la imagen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: all 0.5s ease; /* Transición suave para la animación */
+  }
+  
+  .texto-trasero.show {
+    /* Estilos adicionales cuando el texto debe mostrarse */
+    display: block; /* Mostrar el texto */
+  }
+.flip-container {
+    perspective: 1000px; /* Profundidad de la perspectiva */
+}
+
+.flip-container:hover .flipper {
+    transform: rotateY(180deg); /* Girar la flipper cuando se pase el ratón por encima */
+}
+
+.flipper {
+    transition: 0.6s; /* Duración de la transición */
+    transform-style: preserve-3d; /* Conservar la perspectiva */
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Ocultar la cara posterior cuando se gire */
+}
+
+.back {
+    transform: rotateY(180deg); /* Girar la cara posterior */
+    background-color: #ffffff; /* Color de fondo para la cara posterior */
+    color: #000000; /* Color del texto en la cara posterior */
+    text-align: center; /* Alinear el texto al centro */
+}
+.puntos{
+    position: absolute;
+    font-family: "Permanent Marker", cursive;
+    font-size: 40px;
+    top: 60%; /* Ajusta la posición vertical del botón */
+    left: 52%;/* left: 0%; Ajusta la posición horizontal del botón */
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.nube{
+    position: relative;
+}
+/* @keyframes destello {
+    0% {
+      box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.7);
+    }
+    100% {
+      box-shadow: 0 0 40px 20px rgba(255, 255, 255, 0);
+    }
+  } */
+
+@keyframes confetti {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(1000px) rotate(720deg);
+      opacity: 1;
+    }
+  }
+  
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000; /* Color de un papelito de confeti */
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5); /* Sombra del papelito */
+    animation: confetti 5s ease-in-out;
+  }

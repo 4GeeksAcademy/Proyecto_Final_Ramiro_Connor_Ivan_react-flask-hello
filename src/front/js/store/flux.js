@@ -35,6 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			errorContraseña:false,
 			errorUsuarioUso:false,
 			errorEmailUso:false,
+			contadorTermine:false,
 		},
 
 		actions: {
@@ -296,6 +297,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				}
 			},
+			contador :  function () {
+				setStore({ contadorTermine: true }); 
+			}
 
 			// fetch function from Connor to get info in both languages
 			// fetchCountryInfo: async function () {

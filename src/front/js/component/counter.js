@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useContext } from "react";
+import { Context } from "../store/appContext";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 const Counter = () => {
+	const { store, actions } = useContext(Context);
   const [seconds, setSeconds] = useState(20);
 
   useEffect(() => {
@@ -14,6 +17,8 @@ const Counter = () => {
       }, 1000);
     } else {
       clearInterval(interval);
+      console.log("termine");
+      actions.contador()
     }
 
     return () => clearInterval(interval);

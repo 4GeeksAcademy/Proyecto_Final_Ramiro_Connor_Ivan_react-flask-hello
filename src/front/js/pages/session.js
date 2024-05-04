@@ -36,6 +36,13 @@ export const Session = () => {
     };
 
 
+
+    // console.log(store.contadorTermine);
+    // if (store.contadorTermine == true) {
+    //     questionCheker(200);
+    // } 
+
+
     const handlePoints = () => {
         setPoints(points + 100);
         console.log(points);
@@ -168,7 +175,7 @@ export const Session = () => {
             </div>
             <div className="col-4">
                 <div className="d-flex justify-content-center">
-                    <div className={`contenedor imagen ${flipped ? "flipped" : ""}`}>
+                    <div className={`contenedor imagen flipper ${flipped ? "flipped" : ""}`}>
                         <img className="border border-dark rounded my-2 m-auto front" src={store.question?.image} style={{ width: 450, height: 600 }} alt="Country Scene" />
                         <div className={`texto-trasero back p-0  mt-2  d-flex flex-column ${showBackText ? "show" : ""}`} style={{ width: 450, height: 600 }}>
                             <div className={`w-100 p-2 mb-4 ${bg}`}>
@@ -209,3 +216,5 @@ export const Session = () => {
     );
     
 };
+
+

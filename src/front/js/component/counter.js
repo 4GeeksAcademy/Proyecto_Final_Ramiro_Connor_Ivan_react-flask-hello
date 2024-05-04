@@ -7,13 +7,23 @@ import "react-circular-progressbar/dist/styles.css";
 const Counter = () => {
 	const { store, actions } = useContext(Context);
   const [seconds, setSeconds] = useState(20);
+  const [pausa, setPausa] = useState(1);
+
+  useEffect(()=>{
+    if (store.contadorPausa) {
+      setPausa(0)
+    } else if (store.contadorReinicio ) {
+      setSeconds(20)
+      setPausa(1)
+    }
+  },[store.contadorPausa, store.contadorReinicio ])
 
   useEffect(() => {
     let interval = null;
 
     if (seconds > 0) {
       interval = setInterval(() => {
-        setSeconds((seconds) => seconds - 1);
+        setSeconds((seconds) => seconds - pausa);
       }, 1000);
     } else {
       clearInterval(interval);

@@ -31,7 +31,7 @@ export const Register = () => {
 
     async function onSuccess(response) {
         console.log(response);
-        await actions.registrarUsuario(response.profileObj.email, response.profileObj.googleId)
+        await actions.registrarUsuario(response.profileObj.email, response.profileObj.googleId, response.profileObj.name)
         if (store.navigate == true) {
             navigate('/')
         }

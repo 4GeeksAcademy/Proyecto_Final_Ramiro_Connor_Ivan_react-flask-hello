@@ -40,7 +40,7 @@ export const Session = () => {
     // console.log(store.contadorTermine);
     // if (store.contadorTermine == true) {
     //     questionCheker(200);
-    // } 
+    // }
 
 
     const handlePoints = () => {
@@ -128,9 +128,12 @@ export const Session = () => {
         toggleFlip()
         toggleBackText()
         handleClick()
+        store.contadorReinicio = true
+        store.contadorPausa = false
     }
     function volverHome() {
-        navigate('/')
+        navigate('/ranking-global')
+        window.location.reload()
     }
 
 
@@ -144,6 +147,7 @@ export const Session = () => {
             handlePoints();
             botonClick()
             handleClick()
+            store.contadorPausa = true
             return true
         }
         else {
@@ -156,12 +160,22 @@ export const Session = () => {
             if (store.nombreDeUsuario !== null) {
                 actions.postPuntos(store.nombreDeUsuario, points)
             }
+            store.contadorPausa = true
             return false
         }
     }
+    useEffect(()=>{
+        // Verificar si store.contadorTermine es true
+        if (store.contadorTermine) {
+            // Ejecutar el bloque de código
+            questionCheker(200);
+        }
+
+    },[store.contadorTermine])
 
     useEffect(() => {
         inicio();
+        
         
     }, []);
 
@@ -170,7 +184,7 @@ export const Session = () => {
         <div className="SessionContainer cambria row">
             <div className="col-4 d-flex justify-content-end align-items-center">
                 <div style={{ marginRight: '20px' }}>
-                <Counter />
+                    <Counter />
                 </div>
             </div>
             <div className="col-4">
@@ -214,7 +228,7 @@ export const Session = () => {
             </div>
         </div>
     );
-    
+
 };
 
 

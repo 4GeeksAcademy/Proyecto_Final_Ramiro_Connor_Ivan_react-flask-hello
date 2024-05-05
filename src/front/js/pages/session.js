@@ -231,7 +231,7 @@ export const Session = () => {
 
 
     function questionCheker(id) {
-        if (id == store.question?.country_info.id) {
+        if (id == store.idPais) {
             setResultado(`${t('session.part2')}`);
             setAvanzar(true);
             setBoton(`${t('session.part4')}`)

@@ -64,7 +64,7 @@ export const Session = () => {
         // opciones()
     }
 
-    function opciones() {
+    async function opciones() {
 
         let num2;
         do {
@@ -75,10 +75,9 @@ export const Session = () => {
             num3 = Math.floor(Math.random() * 30) + 1;
         } while (num3 === store.idPais || num3 === num2);
 
-        actions.wrongChoice(num2);
-        actions.wrongChoice1(num3);
+        await actions.wrongChoice(num2);
+        await actions.wrongChoice1(num3);
         console.log("Números generados:", num2, num3, "id pais:", store.idPais);
-        generateShuffledRespuestas()
     }
 
 
@@ -260,6 +259,12 @@ export const Session = () => {
 
 
 
+    useEffect(() => {
+        console.log("pais actualizado opciones:", store.option1, store.option1);
+        
+        generateShuffledRespuestas()
+
+    }, [store.option1,store.option2]);
     useEffect(() => {
         console.log("id pais actualizado:", store.idPais);
         opciones()

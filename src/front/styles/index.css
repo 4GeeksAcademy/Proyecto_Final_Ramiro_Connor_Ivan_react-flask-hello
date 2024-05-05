@@ -1,7 +1,6 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
-
+:root {
+    --fs-norm: 1rem; /* defaults to browser's font-size definition */
+  }
 .logo {
     width: 50px;
     height: 50px;
@@ -12,7 +11,8 @@
     font-family: "Rubik Bubbles", system-ui;
     /* font-weight: bold; */
     color: white;
-    font-size: 150px; 
+    
+    font-size: calc(var(--fs-norm) + 6vw);
   }
 .iniciar-sesion{
     font-size: 20px;
@@ -126,9 +126,9 @@ a{
 .segundo{
     position: absolute;
     font-family: "Permanent Marker", cursive;
-    font-size: 40px;
+    font-size: x-large;
     top: 28%; /* Ajusta la posición vertical del botón */
-    left: 27%;/* left: 0%; Ajusta la posición horizontal del botón */
+    left: 17%;/* left: 0%; Ajusta la posición horizontal del botón */
     transform: translate(-50%, -50%);
     padding: 10px 20px;
     cursor: pointer;
@@ -136,7 +136,7 @@ a{
 .primero{
     position: absolute;
     font-family: "Permanent Marker", cursive;
-    font-size: 40px;
+    font-size: x-large;
     top: 9%; /* Ajusta la posición vertical del botón */
     left: 54%;/* left: 0%; Ajusta la posición horizontal del botón */
     transform: translate(-50%, -50%);
@@ -146,16 +146,82 @@ a{
 .tercero{
     position: absolute;
     font-family: "Permanent Marker", cursive;
-    font-size: 40px;
+    font-size: x-large;
     top: 39%; /* Ajusta la posición vertical del botón */
-    left: 76%;/* left: 0%; Ajusta la posición horizontal del botón */
+    left: 80%;/* left: 0%; Ajusta la posición horizontal del botón */
     transform: translate(-50%, -50%);
     padding: 10px 20px;
     cursor: pointer;
 }
-@media screen and (max-width: 768px) {
+.flag{
+    width:3.125rem;
+}
+.languageButton{
+    width:4.125rem;
+    height:3.250rem;
+}
+.imgED{
+    width: 50px;
+    height: 200px;
+}
+.nube{
+    width: 300px; 
+    height: 200px;
+}
+.podio{
+    width:900px;
+    height: 430px;
+}
+
+@media screen and (max-width: 992px){
+    .nube{
+        width: 250px; 
+        height: 150px;
+    }
+    .nubetexto{
+        font-size: large;
+    }
+    .podio{
+        width:700px;
+        height: 330px;
+    }
+    .segundo{
+        left: 15%;
+    }
+    .tercero{
+        left: 83%;
+    }
+
+}
+@media screen and (max-width: 768px ) {
+    .podio{
+        width: 520px;
+        height: 300px;
+    }
+
+    .primero{
+        font-size: large;
+    }
+    .segundo{
+        font-size: large;
+        left: 15%;
+    }
+    .tercero{
+        font-size: large;
+        left: 83%;
+    }
+    .nube{
+        width: 200px; 
+        height: 100px;
+    }
+    .nubetexto{
+        padding-top: 30px;
+        font-size: medium;
+    }
     .titulo{
-        font-size: 110px;
+        
+        font-size: 4.125rem;
+        
     }
     .texto{
         font-size: 20px;
@@ -201,8 +267,40 @@ a{
     .pading-texto{
         padding: 25px;
     }
+    .flag{
+        width:2.125rem;
+    }
+    .languageButton{
+        padding-bottom: 0.2505rem;
+        width:3.125rem;
+        height:2.250rem;
+    }
+    
+
+    /*----------------Session----------------*/
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 576px) {
+    .podio{
+        width: 450px;
+        height: 150px;
+    }
+
+    .primero{
+        font-size: large;
+    }
+    .segundo{
+        font-size: large;
+        left: 15%;
+    }
+    .tercero{
+        font-size: large;
+        left: 83%;
+    }
+    .nubetexto{
+        padding-top: 30px;
+        font-size: medium;
+    }
+
     .titulo{
         font-size: 40px;
     }
@@ -250,6 +348,8 @@ a{
     .pading-texto{
         padding: 15px;
     }
+    /*----------------Session----------------*/
+
 }
 .contenedor {
     position: relative;

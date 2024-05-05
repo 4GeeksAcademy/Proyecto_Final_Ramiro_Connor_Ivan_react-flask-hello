@@ -37,8 +37,8 @@ export const Navbar = () => {
 	}
 
 	return (
-		<nav className="navbar navbar-light bg-light p-0 navbar-expand-lg ">
-			<div className="d-flex justify-content-between w-100 back-navbar align-items-center">
+		<nav className="navbar navbar-light bg-light  p-0 navbar-expand-lg ">
+			<div className="d-flex flex-row justify-content-between w-100 back-navbar ">
 				<div className="d-flex">
 					<Link to="/">
 						<img className="logo m-3" src={logo} />
@@ -61,26 +61,28 @@ export const Navbar = () => {
 						</ul>
 					</div>
 				</div>
-				<div className="position-absolute top-50 start-50 translate-middle">
-					{Object.keys(lngs).map((lng) => (
-						<button key={lng} style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }} type="submit" onClick={() => i18n.changeLanguage(lng)}>
-							{lng === 'es' && <img src="https://flagsapi.com/ES/shiny/64.png" alt="Spain Flag" />}
-							{lng === 'en' && <img src="https://flagsapi.com/GB/shiny/64.png" alt="UK Flag" />}
-						</button>
-					))}
-				</div>
-				<div className="ml-auto">
-					{store.tokenOK ? <div className="btn-group dropstart">
-						<button type="button" className="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-							<i className="fa-solid fa-circle-user fa-2x m-3 text-black "></i>
-						</button>
-						<ul className="dropdown-menu bg-dark p-3">
-							<li><h5 className="text-white">{store.nombreDeUsuario}</h5></li>
-							<li><button className="btn btn-danger" onClick={cerrarSesion}>Cerrar sesión</button></li>
-						</ul>
-					</div> : <Link to="/login">
-						<button className="btn back-texto3 m-2 cambria iniciar-sesion">{t('navbar.part3')}</button>
-					</Link>}
+				<div className="d-flex">
+					<div className="align-self-center">
+						{Object.keys(lngs).map((lng) => (
+							<button key={lng} style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }} className="languageButton mr-auto bg-transparent border-0" type="submit" onClick={() => i18n.changeLanguage(lng)}>
+								{lng === 'es' && <img className="flag" src="https://flagsapi.com/ES/shiny/64.png" alt="Spain Flag" />}
+								{lng === 'en' && <img className="flag" src="https://flagsapi.com/GB/shiny/64.png" alt="UK Flag" />}
+							</button>
+						))}
+					</div>
+					<div className="align-self-center">
+						{store.tokenOK ? <div className="btn-group dropstart">
+							<button type="button" className="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+								<i className="fa-solid fa-circle-user fa-2x m-3 text-black "></i>
+							</button>
+							<ul className="dropdown-menu bg-dark p-3">
+								<li><h5 className="text-white">{store.nombreDeUsuario}</h5></li>
+								<li><button className="btn btn-danger" onClick={cerrarSesion}>Cerrar sesión</button></li>
+							</ul>
+						</div> : <Link to="/login">
+							<button className="btn back-texto3 m-2 cambria iniciar-sesion">{t('navbar.part3')}</button>
+						</Link>}
+					</div>
 				</div>
 			</div>
 		</nav>

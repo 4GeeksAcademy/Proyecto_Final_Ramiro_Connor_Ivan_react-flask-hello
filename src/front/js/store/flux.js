@@ -38,6 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			contadorTermine:false,
 			contadorReinicio:false,
 			contadorPausa:false,
+			idPais:0,
 		},
 
 		actions: {
@@ -185,20 +186,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 			questionRandom: function (numberRandom) {
 				fetch(process.env.BACKEND_URL + "/api/question/" + numberRandom)
 					.then((response) => response.json())
-					.then((data) => setStore({ question: data.results }))
-					.catch((error) => console.log(error))
+					.then((data) => {
+						console.log(data);
+						setStore({ question: data.results })
+						setStore({ idPais: data.results.country_info?.id })
+						console.log(data.results.country_info.id)
+					})
+					.catch((error) => {
+						console.log(error);
+					})
 
 			},
 			wrongChoice: function (numberRandom) {
 				fetch(process.env.BACKEND_URL + "/api/country/" + numberRandom)
 					.then((response) => response.json())
-					.then((data) => setStore({ option1: data.results }))
+					.then((data) => {
+						console.log(data);
+						setStore({ option1: data.results })
+					})
 					.catch((error) => console.log(error))
 			},
 			wrongChoice1: function (numberRandom) {
 				fetch(process.env.BACKEND_URL + "/api/country/" + numberRandom)
 					.then((response) => response.json())
-					.then((data) => setStore({ option2: data.results }))
+					.then((data) => {
+						console.log(data);
+						setStore({ option2: data.results })
+					})
 					.catch((error) => console.log(error))
 			},
 			topTenRanking: async function () {

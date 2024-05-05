@@ -261,10 +261,10 @@ export const Session = () => {
 
     useEffect(() => {
         console.log("pais actualizado opciones:", store.option1, store.option1);
-        
+
         generateShuffledRespuestas()
 
-    }, [store.option1,store.option2]);
+    }, [store.option1, store.option2]);
     useEffect(() => {
         console.log("id pais actualizado:", store.idPais);
         opciones()
@@ -288,46 +288,49 @@ export const Session = () => {
 
 
     return (
-        <div className="SessionContainer cambria row">
-            <div className="col-4 d-flex justify-content-end align-items-center">
-                <div style={{ marginRight: '20px' }}>
-                    <Counter />
+        <div className="container-fluid">
+
+
+            <div className="SessionContainer cambria row">
+                <div className="simpleCounter  col-6 order-1 col-sm-6 order-sm-1 col-md-4 order-md-1 col-lg-4 order-lg-1 d-flex justify-content-end align-items-center">
+                    <div style={{ marginRight: '20px' }}>
+                        <Counter />
+                    </div>
                 </div>
-            </div>
-            <div className="col-4">
-                <div className="d-flex justify-content-center">
-                    <div className={`contenedor imagen flipper ${flipped ? "flipped" : ""}`}>
-                        <img className="border border-dark rounded my-2 m-auto front" src={store.question?.image} style={{ width: 450, height: 600 }} alt="Country Scene" />
-                        <div className={`texto-trasero back p-0  mt-2  d-flex flex-column ${showBackText ? "show" : ""}`} style={{ width: 450, height: 600 }}>
-                            <div className={`w-100 p-2 mb-4 ${bg}`}>
-                                <h3 className="m-0">{resultado}</h3>
-                            </div>
-                            <div>
-                                <p className="m-3">{t(`information.part${store.question?.id}`)}</p>
-                            </div>
-                            <div className="footer mt-auto py-3">
-                                <button type="button" className="btn btn-primary" onClick={() => avanzar ? siguiente() : volverHome()}>{boton}</button>
+                <div className="imgWrapper my-2 col-12 order-3 col-sm-12 order-sm-3  col-md-4 order-md-2 col-lg-4 order-lg-2   ">
+                    <div className="d-flex justify-content-center">
+                        <div className={`contenedor imagen flipper ${flipped ? "flipped" : ""}`}>
+                            <img className="imgED border border-dark rounded mb-2 front" src={store.question?.image} alt="Country Scene" />
+                            <div className={`texto-trasero back p-0 mb-2   d-flex flex-column ${showBackText ? "show" : ""}`} >
+                                <div className={`w-100 p-2 mb-4 ${bg}`}>
+                                    <h3 className="m-0">{resultado}</h3>
+                                </div>
+                                <div>
+                                    <p className="m-3">{t(`information.part${store.question?.id}`)}</p>
+                                </div>
+                                <div className="footer mt-auto py-3">
+                                    <button type="button" className="btn btn-primary" onClick={() => avanzar ? siguiente() : volverHome()}>{boton}</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="col-4">
-                {/* Place the nube component on the right */}
-                <div className={`text-center nube ${flash ? 'confetti' : ''}`}>
-                    <img src={nube} className="mt-3 mx-auto" style={{ width: 300, height: 200 }} />
-                    {showConfetti && <Confetti />}
-                    <div className="puntos">
-                        <h3>{t('session.part6')}:</h3>
-                        <p>{points}</p>
+                <div className="pointCounter col-6 order-2 col-sm-6 order-sm-2  col-md-4 order-md-3 col-lg-4 order-lg-3  ">
+                    {/* Place the nube component on the right */}
+                    <div className={`text-center nube ${flash ? 'confetti' : ''}`}>
+                        <img src={nube} className="nube mt-3 mx-auto" />
+                        {showConfetti && <Confetti />}
+                        <div className="puntos">
+                            <h3 className="nubetexto">{t('session.part6')}:</h3>
+                            <p>{points}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="QuestionHolder text-center">
-                <h1 id="anunciante">{t('session.part1')}</h1>
-            </div>
-            <div className="FlagWrapper d-flex flex-row justify-content-center ">
-                {/* {!showRespuestas && (
+                <div className="QuestionHolder text-center col-12 order-4 col-sm-12 order-sm-4 col-md-12 order-md-4 col-lg-12 order-lg-4">
+                    <h1 id="anunciante">{t('session.part1')}</h1>
+                </div>
+                <div className="FlagWrapper d-flex flex-row col-12 order-5 col-sm-12 order-sm-5 col-md-12 order-md-5 col-lg-12 order-lg-5 justify-content-center ">
+                    {/* {!showRespuestas && (
                     null
                 )}
                 {showRespuestas && (
@@ -339,11 +342,12 @@ export const Session = () => {
                         ))}
                     </div>
                 )} */}
-                {respuestas.map((respuesta, index) => (
-                    <button key={index} className={`buttonStyle mx-3 border border-dark rounded my-2`} style={{ width: 80, height: 64 }} onClick={() => handleClick1(respuesta.id)} disabled={botonClickeado}>
-                        <img src={respuesta.imagen} alt={respuesta.nombre} />
-                    </button>
-                ))}
+                    {respuestas.map((respuesta, index) => (
+                        <button key={index} className={`buttonStyle mx-3 border border-dark rounded my-2`} style={{ width: 80, height: 64 }} onClick={() => handleClick1(respuesta.id)} disabled={botonClickeado}>
+                            <img src={respuesta.imagen} alt={respuesta.nombre} />
+                        </button>
+                    ))}
+                </div>
             </div>
         </div>
     );

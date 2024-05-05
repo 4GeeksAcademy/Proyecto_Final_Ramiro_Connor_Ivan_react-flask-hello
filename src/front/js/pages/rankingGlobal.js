@@ -31,9 +31,9 @@ export const RankingGlobal = () => {
 
     return (
         <div className="back-texto2 p-5 h-auto ">
-            <div className="container">
-                <div className="text-center podio">
-                    <img src={podio} className="text-center" />
+            <div className="container d-flex  flex-column  align-items-center px-2 ">
+                <div className="mx-5 podio">
+                    <img src={podio} className="podio text-center" />
                     <h4 className="primeros3 segundo">{store.posicion2?.user_name}({store.posicion2?.points})</h4>
                     <h4 className="primeros3 primero">{store.posicion1?.user_name}({store.posicion1?.points})</h4>
                     <h4 className="primeros3 tercero">{store.posicion3?.user_name}({store.posicion3?.points})</h4>

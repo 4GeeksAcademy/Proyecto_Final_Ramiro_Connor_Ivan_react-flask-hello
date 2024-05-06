@@ -12,6 +12,8 @@ from api.admin import setup_admin
 from api.commands import setup_commands
 from flask_jwt_extended import JWTManager
 
+from flask_mail import Mail #IMPORTAR LA FUNCION Mail() de flask_mail
+
 # from models import Person
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
@@ -22,6 +24,25 @@ app.url_map.strict_slashes = False
 
 app.config["JWT_SECRET_KEY"] = "coffee"
 jwt = JWTManager(app)
+
+
+mail_settings = {
+    "MAIL_SERVER": 'sandbox.smtp.mailtrap.io',
+    "MAIL_PORT":  2525,
+    "MAIL_USE_TLS": True,
+    "MAIL_USE_SSL": False,
+    "MAIL_USERNAME":  '7430201491dc27', #ACA COLOQUEN EL CORREO DE LA APP DEL ALUMN
+    "MAIL_PASSWORD": 'd8dec7b65b8f34', #PASSWORD DEL CORREO DE LA APP DEL ALUMNO
+    "MAIL_DEFAULT_SENDER": 'ramisca89@gmail.com'
+}
+app.config.update(mail_settings)
+mail = Mail(app)
+#agregan mail a la app y se va llamar en routes.py como current_app
+app.mail= mail
+
+
+
+
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")

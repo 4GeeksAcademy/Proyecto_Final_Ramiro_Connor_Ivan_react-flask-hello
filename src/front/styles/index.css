@@ -24,6 +24,22 @@
     /* font-family: Cambria, serif; */
     font-family: "Permanent Marker", cursive;
 }
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.schoolbell-regular {
+    font-family: "Schoolbell", cursive;
+    font-weight: 600;
+    font-style: normal;
+  }
+.fontdiner-swanky-regular {
+    font-family: "Fontdiner Swanky", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
 .texto{
     font-size: 30px; 
 }

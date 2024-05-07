@@ -47,13 +47,13 @@ export const RecuperarContraseña = () => {
     }, [store.recuperado]);
 
     return (
-        <div className="back-texto2 p-5 h-auto ">
-            <div className="cambria m-auto p-5 back-texto3" style={{ width: "500px", height: "670px" }}>
+        <div className="Loginwrapper back-texto2 d-flex justify-content-center  ">
+            <div className="Cajaform cambria   back-texto3" >
                 <div className="margen">
-                <h1 className="text-center mb-3 recupera">Recuperar Contraseña</h1>
+                <h1 className="FormHeader text-center mb-3 recupera">Recuperar Contraseña</h1>
                 <form className="mb-4" onSubmit={recuperando}>
                     <p className="mb-0 login">Email:</p>
-                    <input type="text" placeholder={t('register.part2')} className="w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input>
+                    <input type="text" placeholder={t('register.part2')} className="Formfield w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input>
                     {mensaje && <p className="text-center text-danger">{mensaje}</p>} {/* Mostrar el mensaje si existe */}
                     <div className="text-center">
                     <button type="submit" className="login mb-5" disabled={desactivado}>Recuperar</button>

@@ -9,13 +9,26 @@ import { Context } from "../store/appContext";;
 
 export const RecuperarContraseña = () => {
     const { store, actions } = useContext(Context);
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState("");
+    const [mensaje, setMensaje] = useState(""); // Estado para almacenar el mensaje
     const { t, i18n } = useTranslation();
+    const navigate = useNavigate();
+
 
     async function recuperando(e) {
         e.preventDefault()
         await actions.recuperarContraseña(email)
+        console.log(store.recuperando);
     }
+    
+    useEffect(() => {
+        // Escucha los cambios en store.recuperando y actualiza el mensaje
+        if (store.recuperando !== null) {
+            setMensaje(store.recuperando);
+        } else if (store.recuperando == null){
+            setMensaje("")
+        }
+    }, [store.recuperando]);
 
     return (
         <div className="back-texto2 p-5 h-auto ">
@@ -25,6 +38,7 @@ export const RecuperarContraseña = () => {
                 <form className="mb-4" onSubmit={recuperando}>
                     <p className="mb-0 login">Email:</p>
                     <input type="text" placeholder={t('register.part2')} className="w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input>
+                    {mensaje && <p className="text-center text-danger">{mensaje}</p>} {/* Mostrar el mensaje si existe */}
                     <div className="text-center">
                     <button type="submit" className="login mb-5">Recuperar</button>
                     </div>

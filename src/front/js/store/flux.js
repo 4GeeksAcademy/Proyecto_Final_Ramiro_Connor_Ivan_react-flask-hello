@@ -41,6 +41,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			contadorReinicio:false,
 			contadorPausa:false,
 			idPais:0,
+			recuperando:null,
+			recuperado:false,
 		},
 
 		actions: {
@@ -333,15 +335,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					console.log(response.status);
 					if (response.status == 200) {
-						
+						setStore({ recuperando: data.msg })
+						setStore({ recuperado: true })
 						return true
-					} else if (response.status == 401) {
-						console.log(data.msg)
 					}else if (response.status == 400) {
+						setStore({ recuperando: data.msg })
+						console.log(data.msg)
+					} else if (response.status == 401) {
+						setStore({ recuperando: data.msg })
 						console.log(data.msg)
 					}
 					return true
 				} catch (error) {
+					setStore({ recuperando: null })
 					console.error(error)
 
 				}

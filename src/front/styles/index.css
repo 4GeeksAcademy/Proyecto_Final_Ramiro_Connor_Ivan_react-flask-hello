@@ -453,3 +453,13 @@ a{
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5); /* Sombra del papelito */
     animation: confetti 5s ease-in-out;
   }
+
+
+.margen{
+    margin-top: 35%;
+    margin-bottom: auto;
+}
+.recupera{
+    font-size: 35px;
+    text-decoration: underline 5px red;
+}

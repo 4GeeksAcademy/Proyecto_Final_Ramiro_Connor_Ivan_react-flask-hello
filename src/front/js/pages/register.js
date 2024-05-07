@@ -109,7 +109,7 @@ export const Register = () => {
 
     return (
         <div className="Loginwrapper back-texto2 d-flex justify-content-center ">
-            <div className="Cajaform cambria my-5  back-texto3" >
+            <div className="Cajaform cambria my-5  back-texto3 formularios" >
                 <h1 className="Formheader text-center mb-3">{t('register.part1')}</h1>
                 <form className="mb-2" onSubmit={formik.handleSubmit}>
                     <p className="Formtext mb-0 login">Email:</p>
@@ -156,12 +156,12 @@ export const Register = () => {
                     ) : null}
                     {enUso()}
                     <div className="text-center">
-                    <button type="submit" className="login mb-3">{t('register.part5')}</button>
+                    <button type="submit" className="login mb-3 px-5 py-1">{t('register.part5')}</button>
                     </div>
                 </form>
                 <p className="altloginText mb-0">{t('register.part6')} <Link to="/login">{t('register.part7')}</Link></p>
                 <p className="altloginText text-center mb-2">{t('register.part8')}</p>
-                <div className="text-center">
+                <div className="text-center mb-5">
                     {/* <img src={google} style={{width : "300px", height : "70px" }}/> */}
                     <GoogleLogin
                         clientID={clientID}

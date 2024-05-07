@@ -71,16 +71,16 @@ export const Login = () => {
 
     return (
         <div className="Loginwrapper back-texto2 d-flex justify-content-center  ">
-            <div className="Cajaform cambria my-5   back-texto3" >
+            <div className="Cajaform cambria my-5   back-texto3 formularios" >
                 <h1 className="FormHeader text-center mb-3">Login</h1>
                 <form className="mb-4" onSubmit={userLogin}>
                     <p className="Formtext mb-0 login">Email:</p>
-                    <input type=" text" placeholder={t('register.part2')} className=" Formfield w-100  login" onChange={event => setEmail(event.target.value)}></input>
+                    <input type=" text" placeholder={t('register.part2')} className=" Formfield w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input>
                     <p className="Formtext mb-0 login">{t('login.part1')}:</p>
-                    <input type="password" className="Formfield mb-3 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br />
+                    <input type="password" className="Formfield mb-4 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br />
                     {errorEmail()}
                     <div className="text-center">
-                        <button type="submit" className="login mb-3">{t('login.part2')}</button>
+                        <button type="submit" className="px-5 py-1 mt-2 login mb-3">{t('login.part2')}</button>
                     </div>
                 </form>
                 <div className="altlogin">

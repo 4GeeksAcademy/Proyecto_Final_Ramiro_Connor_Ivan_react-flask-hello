@@ -48,15 +48,15 @@ export const RecuperarContraseña = () => {
 
     return (
         <div className="Loginwrapper back-texto2 d-flex justify-content-center  ">
-            <div className="Cajaform cambria   back-texto3" >
-                <div className="margen">
-                <h1 className="FormHeader text-center mb-3 recupera">Recuperar Contraseña</h1>
+            <div className="Cajaform cambria   back-texto3 formularios my-5" >
+                <div>
+                <h1 className="FormHeader text-center mb-3 mt-5 recupera">Recuperar Contraseña</h1>
                 <form className="mb-4" onSubmit={recuperando}>
                     <p className="mb-0 login">Email:</p>
                     <input type="text" placeholder={t('register.part2')} className="Formfield w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input>
                     {mensaje && <p className="text-center text-danger">{mensaje}</p>} {/* Mostrar el mensaje si existe */}
                     <div className="text-center">
-                    <button type="submit" className="login mb-5" disabled={desactivado}>Recuperar</button>
+                    <button type="submit" className="login mb-5 px-5 py-1" disabled={desactivado}>Recuperar</button>
                     </div>
                 </form>
                 <h5 className="btn btn-success mt-5 text-center w-100" onClick={volver}><Link to='/' className="text-black ">Volver al inicio</Link></h5>

@@ -79,9 +79,10 @@ export const Navbar = () => {
 								<li><h5 className="text-white">{store.nombreDeUsuario}</h5></li>
 								<li><button className="btn btn-danger" onClick={cerrarSesion}>Cerrar sesión</button></li>
 							</ul>
-						</div> : <Link to="/login">
-							<button className="btn back-texto3 m-2 cambria iniciar-sesion">{t('navbar.part3')}</button>
-						</Link>}
+						</div> : <div class="btn-group m-2 cambria" role="group" aria-label="Basic example"><Link to='/login'>
+							<button type="button" class="btn back-texto3 iniciar-sesion">{t('navbar.part3')}</button></Link>
+							<Link to='/register'><button type="button" class="btn back-texto3 iniciar-sesion">{t('navbar.part4')}</button></Link>
+						</div>}
 					</div>
 				</div>
 			</div>
@@ -89,6 +90,9 @@ export const Navbar = () => {
 	);
 };
 
+// <Link to="/login">
+// 	<button className="btn back-texto3 m-2 cambria iniciar-sesion">{t('navbar.part3')}</button>
+// </Link>
 
 {/* <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">

@@ -1,3 +1,5 @@
+import { RecuperarContraseña } from "../pages/recuperarContraseña";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -39,6 +41,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			contadorReinicio:false,
 			contadorPausa:false,
 			idPais:0,
+			recuperando:null,
+			recuperado:false,
 		},
 
 		actions: {
@@ -315,6 +319,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			contador :  function () {
 				setStore({ contadorTermine: true }); 
+			},
+			recuperarContraseña: async function (email) {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + '/api/forgotpassword', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body:JSON.stringify({
+							"email":email
+						})
+					})
+					const data = await response.json()
+					console.log(data);
+					console.log(response.status);
+					if (response.status == 200) {
+						setStore({ recuperando: data.msg })
+						setStore({ recuperado: true })
+						return true
+					}else if (response.status == 400) {
+						setStore({ recuperando: data.msg })
+						console.log(data.msg)
+					} else if (response.status == 401) {
+						setStore({ recuperando: data.msg })
+						console.log(data.msg)
+					}
+					return true
+				} catch (error) {
+					setStore({ recuperando: null })
+					console.error(error)
+
+				}
 			},
 
 			// fetch function from Connor to get info in both languages

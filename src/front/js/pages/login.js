@@ -84,7 +84,7 @@ export const Login = () => {
                     </div>
                 </form>
                 <p className="mb-0">{t('login.part3')} <Link to="/register">{t('login.part4')}</Link></p>
-                <p className="mb-4">{t('login.part5')}</p>
+                <p className="mb-4"><Link to='/forgot-password'>{t('login.part5')}</Link></p>
                 <p className="text-center mb-4">{t('login.part6')}</p>
                 <div className="text-center">
                     {/* <img src={google} style={{width : "300px", height : "70px" }}/> */}

@@ -1,23 +1,4 @@
-/*
-    home.css: This website contains selectors only used in home.css
-
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
-/* ranking */
-.table-slide-in {
-    opacity: 0;
-    transform: translateX(-100%);
-    transition: opacity 1s, transform 1s;
-}
-
-.table-slide-in.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.homeButton {
+.theButton {
     * {
         outline:none;
         text-decoration:none;
@@ -98,7 +79,7 @@
       
       .btn--action{
         display: block;
-        width: 10%;
+        width: 20%;
         padding: 1rem;
         border-radius: 1.5rem;
         background-color: #f6e58d;
@@ -118,7 +99,7 @@
       }
       
       .btn--action span:before {
-        content: "\f7a2"; 
+        content: "\f57c"; 
         color: inherit; /* Inherit color from the button's text */
         font-size: inherit; /* Inherit font-size from the button's text */
         font-family: "Font Awesome 5 Free"; /* Inherit font-family from the button's text */
@@ -145,12 +126,12 @@
         transform: translateY(5px);
       }
 
-      /* .start-100 {
-        left: 50% !important;
-      }
+      .start-100 {
+        left: 80% !important;
+     }
 
-      .top-50 {
-      top: 85% !important;
-      } */
+     .top-50 {
+      top: 60% !important;
+    }
 
 }

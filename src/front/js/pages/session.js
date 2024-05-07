@@ -5,6 +5,7 @@ import Confetti from 'react-confetti';
 import nube from "../../img/nubepngwing.com.png"
 import { useTranslation, Trans } from 'react-i18next';
 import Counter from "../component/counter";
+import "../../styles/session.css";
 
 export const Session = () => {
     const { store, actions } = useContext(Context);

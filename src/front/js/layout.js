@@ -15,6 +15,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import App from "./app";
+import Moon404 from "./pages/404";
 
 //create your first component
 const Layout = () => {
@@ -35,7 +36,7 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<App />} path="/app" />
                         <Route element={<Register />} path="/register" />
-                        <Route element={<h1>Not found!</h1>} path="/*"/>
+                        <Route element={<Moon404 />} path="*" />
                         <Route element={<Session />} path="/session" />
                         <Route element={<RankingGlobal />} path="/ranking-global" />
                         <Route element={<RecuperarContraseña />} path="/forgot-password" />

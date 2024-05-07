@@ -3,30 +3,31 @@ import { Link } from "react-router-dom";
 import podio from "../../img/podium-7920733_960_720.webp"
 import { useTranslation, Trans } from 'react-i18next';
 import { Context } from "../store/appContext";
+import "../../styles/rankingGlobal.css";
 
 export const RankingGlobal = () => {
     const { store, actions } = useContext(Context);
     const { t, i18n } = useTranslation();
 
-    function verificacionNombre () {
-        if (store.nombreDeUsuario == null ){
+    function verificacionNombre() {
+        if (store.nombreDeUsuario == null) {
             return `${t('ranking.part1')}`
         } else {
             return store.nombreDeUsuario
         }
     }
 
-    
-    
-    useEffect(()=>{
+
+
+    useEffect(() => {
         const init = async function () {
             await actions.verificacionToken();
             actions.topTenRanking()
             actions.miMejorPosicion()
-            
+
         }
         init()
-    },[])
+    }, [])
     console.log(store.nombreDeUsuario)
 
     return (
@@ -37,7 +38,9 @@ export const RankingGlobal = () => {
                     <h4 className="primeros3 segundo">{store.posicion2?.user_name}({store.posicion2?.points})</h4>
                     <h4 className="primeros3 primero">{store.posicion1?.user_name}({store.posicion1?.points})</h4>
                     <h4 className="primeros3 tercero">{store.posicion3?.user_name}({store.posicion3?.points})</h4>
+
                 </div>
+
                 <div>
                     <table className="table back-texto3">
                         <thead>
@@ -91,7 +94,13 @@ export const RankingGlobal = () => {
                             </tr>
                         </tbody>
                     </table>
+                    <Link to={"/"}>
+                        <div className="theButton">
+                            <a href="#" className="btn btn--action position-absolute top-50 start-100 translate-middle"><span>{t('ranking.part6')}</span></a>
+                        </div>
+                    </Link>
                 </div>
+
             </div>
         </div>
     );

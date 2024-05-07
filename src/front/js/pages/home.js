@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
-import portada from "../../img/pngwing.com.png"
+import portada from "../../img/nobackgroundplaces.png"
 import imgMundi from "../../img/cropped-footer-foto1.png"
 import imgLugares2 from "../../img/pngwing.com (2).png"
 import imgRanking from "../../img/klipartz.com (2).png"
@@ -22,7 +22,9 @@ export const Home = () => {
 					<img src={portada} className="w-100" />
 					<div>
 						<Link to="/demo">
-							<button className="boton">{t('home.part1')}</button>
+						<div className="homeButton">
+                            <a href="#" className="btn btn--action position-absolute top-50 start-50 translate-middle"><span>{t('home.part1')}</span></a>
+                        </div>
 						</Link>
 					</div>
 				</div>

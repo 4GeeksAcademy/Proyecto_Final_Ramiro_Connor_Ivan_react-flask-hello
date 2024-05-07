@@ -79,7 +79,9 @@ i18n
                         part1: "Sign in or Register to participate in the Global Ranking",
                         part2: "Position",
                         part3: "Username",
-                        part4: "Score"
+                        part4: "Score",
+                        part5: "Let's ",
+                        part6: "Play again"
                     },
                     information: {
                         part1: "The Obelisco de Buenos Aires is a prominent monument located in the heart of Buenos Aires, Argentina. It stands as a symbol of the city's identity and history, soaring approximately 67 meters (220 feet) tall. Built in 1936, it serves as a landmark and a focal point for various cultural events and gatherings.",
@@ -102,6 +104,11 @@ i18n
                         part18: "The Eiffel Tower in Paris, France, is an iconic iron lattice tower and a symbol of the city. Completed in 1889 as a centerpiece for the 1889 World's Fair, it's one of the most recognizable structures in the world. The Eiffel Tower offers panoramic views of Paris and attracts millions of visitors annually.",
                         part19: "The Leaning Tower of Pisa in Italy is a freestanding bell tower known for its unintended tilt. Completed in 1372, it began to lean during construction due to soft ground. Despite efforts to stabilize it, the lean has increased over the years, making it a famous landmark and a symbol of architectural mishaps.",
                         part20: "The Blue Mosque in Istanbul, Turkey, is a stunning example of Ottoman architecture. Completed in 1616, it features intricate tile work and cascading domes. The mosque is still used for worship today and is open to visitors, attracting millions each year. It's a symbol of Istanbul's cultural richness and religious heritage."
+                    },
+                    notFound: {
+                        part1: "Oops!",
+                        part2: "You've left Earth! No famous sights or monuments here!",
+                        part3: "Back to Earth"
                     }
 
                 }
@@ -168,7 +175,9 @@ i18n
                         part1: "Inicia Sesión o Registrate para participar del Ranking Global",
                         part2: "Posicion",
                         part3: "Nombre de usuario",
-                        part4: "Puntuacion"
+                        part4: "Puntuacion",
+                        part5: "Vamos a ",
+                        part6: "Jugar de nuevo"
                     },
                     information: {
                         part1: "El Obelisco de Buenos Aires es un prominente monumento ubicado en el corazón de Buenos Aires, Argentina. Se erige como símbolo de la identidad e historia de la ciudad, alcanzando aproximadamente 67 metros (220 pies) de altura. Construido en 1936, sirve como hito y punto focal para diversos eventos culturales y reuniones.",
@@ -191,7 +200,13 @@ i18n
                         part18: "La Torre Eiffel en París, Francia, es una torre de hierro icónica y un símbolo de la ciudad. Terminada en 1889 como pieza central de la Feria Mundial de 1889, es una de las estructuras más reconocibles del mundo. La Torre Eiffel ofrece vistas panorámicas de París y atrae a millones de visitantes anualmente.",
                         part19: "La Torre Inclinada de Pisa en Italia es una torre campanario independiente conocida por su inclinación no intencional. Terminada en 1372, comenzó a inclinarse durante su construcción debido al terreno blando. A pesar de los esfuerzos por estabilizarla, la inclinación ha aumentado con los años, convirtiéndola en un famoso hito y un símbolo de errores arquitectónicos.",
                         part20: "La Mezquita Azul en Estambul, Turquía, es un impresionante ejemplo de arquitectura otomana. Terminada en 1616, presenta intrincados trabajos en cerámica y cúpulas en cascada. La mezquita todavía se usa para el culto hoy en día y está abierta a los visitantes, atrayendo a millones cada año. Es un símbolo de la riqueza cultural e religiosa de Estambul."
+                    },
+                    notFound: {
+                        part1: "¡Ups!",
+                        part2: "¡Has dejado la Tierra! ¡Aquí no hay lugares famosos ni monumentos!",
+                        part3: "Volver a la Tierra"
                     }
+                    
                 }
             }
         }

@@ -10,7 +10,7 @@
 }
 .Cajaform{
     width: 500px;
-    height: 670px;
+    height: 770px;
 }
 .titulo {
     /* font-family: Cambria, serif; */
@@ -183,7 +183,7 @@ a{
 .Cajaform{
     padding:30px 20px 15px 20px;
     width: 400px;
-    height: 570px;
+    height: 650px;
 }
 .FormHeader{
     font-size: xx-large;
@@ -213,7 +213,7 @@ a{
     .Cajaform{
         padding:30px 20px 30px 20px;
         width: 400px;
-        height: 630px;
+        height: 620px;
     }
     .nube{
         width: 250px; 
@@ -536,4 +536,7 @@ a{
 }
 .recupera{
     text-decoration: underline 5px red;
+}
+.formularios{
+    border-radius: 10%;
 }

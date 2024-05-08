@@ -40,7 +40,7 @@ i18n
                         part3: "It's a big guessing game about places all over the world! You see pictures of famous places, like cool buildings, awesome nature spots, and places everyone wants to visit. Then, you try to guess where they are. It's super fun!",
                         part4: "How to Play",
                         part5: "In GuessNation you'll see photos of interesting places from all over the world, like the Eiffel Tower or the Statue of Liberty. Your job is to select the country where the image is located. If you guess correctly, you'll earn points and become a geography expert!",
-                        part6: "In GuessNations, every time you guess where a famous place is, and you're right, you get a point! Keep getting them right to show how good you are at geography! Play with kids from all over the world and see if you can be at the top of the list. Are you ready for the fun? Join GuessNations and start your journey around the world today!"
+                        part6: "In GuessNations, every time you guess where a famous place is, and you're right, you get 100 points! Keep getting them right to show how good you are at geography! Play with kids from all over the world and see if you can be at the top of the list. Are you ready for the fun? Join GuessNations and start your journey around the world today!"
                     },
                     login: {
                         part1: "Password",
@@ -114,7 +114,10 @@ i18n
                     password: {
                         part1: "Recover Password",
                         part2: "Recover",
-                        part3: "Back to Home"
+                        part3: "Back to Home",
+                        part4: "You must enter the email",
+                        part5: "The email entered does not exist in our records",
+                        part6: "Your new password has been sent to the entered email address"
                     }
 
                 }
@@ -142,7 +145,7 @@ i18n
                         part3: "Es un juego de trivia geográfica en el que los jugadores deben adivinar la ubicación de lugares icónicos del mundo. El juego presenta a los jugadores una serie de imágenes de lugares famosos, como monumentos, edificios históricos, paisajes naturales y sitios turísticos de renombre mundial.",
                         part4: "¿Como Jugar?",
                         part5: "En GuessNation verás fotos de lugares interesantes de todo el mundo, como la Torre Eiffel o el Monumento a la Libertad. Tu trabajo es seleccionar en qué país esta ubicada la imagen. Si adivinas correctamente, ¡ganarás puntos y te convertirás en un experto en geografía!",
-                        part6: "En GuessNations, cada vez que adivinas correctamente la ubicación de un lugar famoso, ganas un punto. ¡Podrás mantener una racha de victorias para mostrar tu habilidad y conocimiento geográfico! Compite contra jugadores de todo el mundo y sube en el ranking global. ¿Estás listo para aceptar el desafío? ¡Únete a GuessNations y comienza tu viaje por el mundo hoy mismo!"
+                        part6: "En GuessNations, cada vez que adivinas correctamente la ubicación de un lugar famoso, ganas 100 puntos. ¡Podrás mantener una racha de victorias para mostrar tu habilidad y conocimiento geográfico! Compite contra jugadores de todo el mundo y sube en el ranking global. ¿Estás listo para aceptar el desafío? ¡Únete a GuessNations y comienza tu viaje por el mundo hoy mismo!"
                     },
                     login: {
                         part1: "Contraseña",
@@ -216,9 +219,12 @@ i18n
                     password: {
                         part1: "Recuperar Contraseña",
                         part2: "Recuperar",
-                        part3: "Volver al inicio"
+                        part3: "Volver al inicio",
+                        part4: "Debe ingresar el email",
+                        part5: "El correo ingresado no existe en nuestros registros",
+                        part6: "Su nueva clave ha sido enviada al correo electrónico ingresado",
                     }
-                    
+
                 }
             }
         }

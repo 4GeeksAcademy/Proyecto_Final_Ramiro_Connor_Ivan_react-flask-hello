@@ -16,7 +16,7 @@ export const Home = () => {
 
 	return (
 		<div className="text-center ">
-			<div className="back-texto2">
+			<div className="back-texto2 h-100">
 				<h1 className="titulo pt-1 ">GuessNation</h1>
 				<div className="imagen-boton ">
 					<img src={portada} className="w-100" />

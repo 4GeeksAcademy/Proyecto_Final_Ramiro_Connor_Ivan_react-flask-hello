@@ -32,12 +32,11 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
-                        <Route element={<Session />} path="/demo" />
+                        <Route element={<Session />} path="/game" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<App />} path="/app" />
                         <Route element={<Register />} path="/register" />
                         <Route element={<Moon404 />} path="*" />
-                        <Route element={<Session />} path="/session" />
                         <Route element={<RankingGlobal />} path="/ranking-global" />
                         <Route element={<RecuperarContraseña />} path="/forgot-password" />
                         

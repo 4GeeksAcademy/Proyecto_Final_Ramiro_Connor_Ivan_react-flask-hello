@@ -5,6 +5,18 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&family=Roboto&family=Schoolbell&display=swap');
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
 /* ranking */
 .table-slide-in {
     opacity: 0;
@@ -98,9 +110,9 @@
       
       .btn--action{
         display: block;
-        width: 10%;
-        padding: 1rem;
-        border-radius: 1.5rem;
+        width: 15%;
+        padding: 2rem;
+        border-radius: 2.5rem;
         background-color: #f6e58d;
         color: #000;
         transition: all .5s ease 0s; 

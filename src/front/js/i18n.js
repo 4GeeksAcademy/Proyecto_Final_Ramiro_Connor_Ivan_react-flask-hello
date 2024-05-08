@@ -110,6 +110,11 @@ i18n
                         part1: "Oops!",
                         part2: "You've left Earth! No famous sights or monuments here!",
                         part3: "Back to Earth"
+                    },
+                    password: {
+                        part1: "Recover Password",
+                        part2: "Recover",
+                        part3: "Back to Home"
                     }
 
                 }
@@ -207,6 +212,11 @@ i18n
                         part1: "¡Ups!",
                         part2: "¡Has dejado la Tierra! ¡Aquí no hay lugares famosos ni monumentos!",
                         part3: "Volver a la Tierra"
+                    },
+                    password: {
+                        part1: "Recuperar Contraseña",
+                        part2: "Recuperar",
+                        part3: "Volver al inicio"
                     }
                     
                 }

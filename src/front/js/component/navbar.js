@@ -25,15 +25,15 @@ export const Navbar = () => {
 	let parteEspecifica = null;
 	let parteEspecifica2 = null;
 	let parteEspecifica3 = null;
-	let ranking_global = <Link to="/ranking-global"><a className="text-black text-decoration-none cambria navbar-text p-2">Ranking Global</a></Link>
+	let ranking_global = <Link to="/ranking-global"><a className="text-black text-decoration-none schoolbell-regular navbar-text p-2">Ranking Global</a></Link>
 
 	let libritoBoton = <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>;
 
 	if (location.pathname === '/') {
 		libritoBoton = <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
-		parteEspecifica = <a href="#queEsGuessNation" className="text-black text-decoration-none cambria navbar-text p-2">{t('navbar.part1')}</a>;
-		parteEspecifica2 = <a href="#comoJugar" className="text-black text-decoration-none cambria navbar-text p-2">{t('navbar.part2')}</a>;
-		parteEspecifica3 = <a href="#ranking" className="text-black text-decoration-none cambria navbar-text p-2">Ranking</a>;
+		parteEspecifica = <a href="#queEsGuessNation" className="text-black text-decoration-none schoolbell-regular navbar-text p-2">{t('navbar.part1')}</a>;
+		parteEspecifica2 = <a href="#comoJugar" className="text-black text-decoration-none schoolbell-regular navbar-text p-2">{t('navbar.part2')}</a>;
+		parteEspecifica3 = <a href="#ranking" className="text-black text-decoration-none schoolbell-regular navbar-text p-2">Ranking</a>;
 	}
 
 	return (
@@ -79,7 +79,7 @@ export const Navbar = () => {
 								<li><h5 className="text-white">{store.nombreDeUsuario}</h5></li>
 								<li><button className="btn btn-danger" onClick={cerrarSesion}>Cerrar sesión</button></li>
 							</ul>
-						</div> : <div class="btn-group m-2 cambria" role="group" aria-label="Basic example"><Link to='/login'>
+						</div> : <div class="btn-group m-2 schoolbell-regular" role="group" aria-label="Basic example"><Link to='/login'>
 							<button type="button" class="btn back-texto3 iniciar-sesion">{t('navbar.part3')}</button></Link>
 							<Link to='/register'><button type="button" class="btn back-texto3 iniciar-sesion">{t('navbar.part4')}</button></Link>
 						</div>}

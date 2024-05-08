@@ -110,9 +110,9 @@
       
       .btn--action{
         display: block;
-        width: 10%;
-        padding: 1rem;
-        border-radius: 1.5rem;
+        width: 15%;
+        padding: 2rem;
+        border-radius: 2.5rem;
         background-color: #f6e58d;
         color: #000;
         transition: all .5s ease 0s; 

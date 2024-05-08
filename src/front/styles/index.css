@@ -1,9 +1,16 @@
 :root {
     --fs-norm: 1rem; /* defaults to browser's font-size definition */
   }
+.altloginText{
+    font-size: larger;
+}
 .logo {
     width: 50px;
     height: 50px;
+}
+.Cajaform{
+    width: 500px;
+    height: 670px;
 }
 .titulo {
     /* font-family: Cambria, serif; */
@@ -51,6 +58,7 @@
 }
 .back-texto2{
     background-color: #97E7E1;
+    height: 750px;
 }
 .back-texto3{
     background-color: #F8F6E3;
@@ -118,7 +126,7 @@ a{
     font-size: 15px;
 }
 .login{
-    font-size: 27px; 
+    font-size: xx-large; 
 }
 
 .SessionContainer{
@@ -188,8 +196,41 @@ a{
     width:900px;
     height: 430px;
 }
+.Cajaform{
+    padding:30px 20px 15px 20px;
+    width: 400px;
+    height: 570px;
+}
+.FormHeader{
+    font-size: xx-large;
+}
+.Formtext{
+   font-size: large;
+}
+.Formfield{
+    width: 360px;
+    height: 45px;
+}
 
 @media screen and (max-width: 992px){
+    .altloginText{
+        font-size: large;
+    }
+    .login{
+        font-size: xx-large; 
+    }
+    .FormHeader{
+        font-size:x-large;
+    }
+    .Formfield{
+        width: 320px;
+        height: 35px;
+    }
+    .Cajaform{
+        padding:30px 20px 30px 20px;
+        width: 400px;
+        height: 630px;
+    }
     .nube{
         width: 250px; 
         height: 150px;
@@ -210,6 +251,25 @@ a{
 
 }
 @media screen and (max-width: 768px ) {
+    .altloginText{
+        font-size: medium;
+    }
+    .login{
+        font-size: x-large; 
+    }
+    .FormHeader{
+        font-size:x-large;
+    }
+    .Formfield{
+        width: 280px;
+        height: 25px;
+    }
+    
+    .Cajaform{
+        padding:30px 20px 15px 20px;
+        width: 350px;
+        height: 570px;
+    }
     .podio{
         width: 520px;
         height: 300px;
@@ -296,6 +356,21 @@ a{
     /*----------------Session----------------*/
 }
 @media screen and (max-width: 576px) {
+    .altloginText{
+        font-size: small;
+    }
+    .login{
+        font-size: larger; 
+    }
+    .FormHeader{
+        font-size: larger;
+    }
+    
+    .Cajaform{
+
+        width: 325px;
+        height: 470px;
+    }
     .podio{
         width: 450px;
         height: 150px;
@@ -476,6 +551,5 @@ a{
     margin-bottom: auto;
 }
 .recupera{
-    font-size: 35px;
     text-decoration: underline 5px red;
 }

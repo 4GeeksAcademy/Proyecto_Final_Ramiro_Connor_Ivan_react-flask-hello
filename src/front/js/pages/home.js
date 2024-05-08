@@ -31,7 +31,7 @@ export const Home = () => {
 			</div>
 			<section id="queEsGuessNation">
 				<div className=" back-texto3">
-					<div className="row align-items-center pading-texto">
+					<div className="row align-items-center me-0 pading-texto">
 						<div className="pading-texto col-lg-6 col-md-12 col-sm-12">
 							<h1 className="cambria negrita">{t('home.part2')}</h1>
 							<p className="schoolbell-regular negrita texto">{t('home.part3')}</p>
@@ -44,7 +44,7 @@ export const Home = () => {
 			</section>
 			<section id="comoJugar">
 			<div className=" back-texto1">
-				<div className="row pading-texto align-items-center">
+				<div className="row pading-texto me-0 align-items-center">
 					<div className="pading-texto col-lg-6 col-md-12 col-sm-12">
 						<img src={imgLugares2} className="w-100" />
 					</div>
@@ -59,7 +59,7 @@ export const Home = () => {
 			</section>
 			<section id="ranking">
 			<div className=" back-texto3">
-				<div className="row pading-texto align-items-center">
+				<div className="row pading-texto me-0 align-items-center">
 					<div className="pading-texto col-lg-6 col-md-12 col-sm-12">
 						<h1 className="cambria negrita">Ranking</h1>
 						<p className="schoolbell-regular negrita texto">

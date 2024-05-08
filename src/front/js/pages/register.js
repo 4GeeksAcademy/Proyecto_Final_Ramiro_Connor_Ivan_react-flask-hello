@@ -108,11 +108,11 @@ export const Register = () => {
     }
 
     return (
-        <div className="back-texto2 p-5 h-auto ">
-            <div className="cambria m-auto p-5 back-texto3" style={{ width: "500px", height: "670px" }}>
-                <h1 className="text-center mb-3">{t('register.part1')}</h1>
+        <div className="Loginwrapper back-texto2 d-flex justify-content-center ">
+            <div className="Cajaform cambria my-5  back-texto3" >
+                <h1 className="Formheader text-center mb-3">{t('register.part1')}</h1>
                 <form className="mb-2" onSubmit={formik.handleSubmit}>
-                    <p className="mb-0 login">Email:</p>
+                    <p className="Formtext mb-0 login">Email:</p>
                     {/* <input type="text" placeholder="ejemplo@gmail.com" className="w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input> */}
                     <input
                         id="email"
@@ -126,7 +126,7 @@ export const Register = () => {
                     {formik.touched.email && formik.errors.email ? (
                         <div className="text-danger">{formik.errors.email}</div>
                     ) : null}
-                    <p className="mb-0 login">{t('register.part3')}:</p>
+                    <p className="Formtext mb-0 login">{t('register.part3')}:</p>
                     {/* <input type="text" className="w-100 mb-4 login" onChange={event => setNombreDeUsuario(event.target.value)}></input> */}
                     <input
                         id="userName"
@@ -139,7 +139,7 @@ export const Register = () => {
                     {formik.touched.userName && formik.errors.userName ? (
                         <div className="text-danger">{formik.errors.userName}</div>
                     ) : null}
-                    <p className="mb-0 login">{t('register.part4')}:</p>
+                    <p className="Formtext mb-0 login">{t('register.part4')}:</p>
                     {/* <input type="password" className="mb-4 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br/> */}
                     <input
                         id="contraseña"
@@ -159,8 +159,8 @@ export const Register = () => {
                     <button type="submit" className="login mb-3">{t('register.part5')}</button>
                     </div>
                 </form>
-                <p className="mb-0">{t('register.part6')} <Link to="/login">{t('register.part7')}</Link></p>
-                <p className="text-center mb-2">{t('register.part8')}</p>
+                <p className="altloginText mb-0">{t('register.part6')} <Link to="/login">{t('register.part7')}</Link></p>
+                <p className="altloginText text-center mb-2">{t('register.part8')}</p>
                 <div className="text-center">
                     {/* <img src={google} style={{width : "300px", height : "70px" }}/> */}
                     <GoogleLogin

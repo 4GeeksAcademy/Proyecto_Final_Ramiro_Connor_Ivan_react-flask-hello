@@ -80,7 +80,7 @@ export const Navbar = () => {
 								<li><button className="btn btn-danger" onClick={cerrarSesion}>Cerrar sesión</button></li>
 							</ul>
 						</div> : <Link to="/login">
-							<button className="btn back-texto3 m-2 cambria iniciar-sesion">{t('navbar.part3')}</button>
+							<button className="btn back-texto3 m-2 schoolbell-regular iniciar-sesion">{t('navbar.part3')}</button>
 						</Link>}
 					</div>
 				</div>

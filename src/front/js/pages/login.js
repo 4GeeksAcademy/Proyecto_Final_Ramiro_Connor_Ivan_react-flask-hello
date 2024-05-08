@@ -41,10 +41,10 @@ export const Login = () => {
 
     // Condicionales de Manejo de Error 
 
-    function errorEmail () {
+    function errorEmail() {
         // console.log(store.errorEmail);
         // console.log(store.errorContraseña);
-        if (store.errorEmail == true ){
+        if (store.errorEmail == true) {
             store.errorEmail = false
             console.log("hola");
             return <div className="text-danger mb-2">{t('login.part7')} </div>
@@ -70,32 +70,38 @@ export const Login = () => {
     }
 
     return (
-        <div className="back-texto2 p-5 h-auto ">
-            <div className="cambria m-auto p-5 back-texto3" style={{ width: "500px", height: "670px" }}>
-                <h1 className="text-center mb-3">Login</h1>
+        <div className="Loginwrapper back-texto2 d-flex justify-content-center  ">
+            <div className="Cajaform cambria my-5   back-texto3" >
+                <h1 className="FormHeader text-center mb-3">Login</h1>
                 <form className="mb-4" onSubmit={userLogin}>
-                    <p className="mb-0 login">Email:</p>
-                    <input type="text" placeholder={t('register.part2')} className="w-100 mb-4 login" onChange={event => setEmail(event.target.value)}></input>
-                    <p className="mb-0 login">{t('login.part1')}:</p>
-                    <input type="password" className="mb-4 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br/>
+                    <p className="Formtext mb-0 login">Email:</p>
+                    <input type=" text" placeholder={t('register.part2')} className=" Formfield w-100  login" onChange={event => setEmail(event.target.value)}></input>
+                    <p className="Formtext mb-0 login">{t('login.part1')}:</p>
+                    <input type="password" className="Formfield mb-3 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br />
                     {errorEmail()}
                     <div className="text-center">
-                    <button type="submit" className="login mb-3">{t('login.part2')}</button>
+                        <button type="submit" className="login mb-3">{t('login.part2')}</button>
                     </div>
                 </form>
-                <p className="mb-0">{t('login.part3')} <Link to="/register">{t('login.part4')}</Link></p>
-                <p className="mb-4"><Link to='/forgot-password'>{t('login.part5')}</Link></p>
-                <p className="text-center mb-4">{t('login.part6')}</p>
-                <div className="text-center">
-                    {/* <img src={google} style={{width : "300px", height : "70px" }}/> */}
-                    <GoogleLogin
-                        clientID={clientID}
-                        onSuccess={onSuccess}
-                        onFailure={onFailure}
-                        cookiePolicy={"single_host_policy"}
+                <div className="altlogin">
+                    <p className="altloginText">{t('login.part3')} <Link to="/register">{t('login.part4')}</Link></p>
+                    <p className="altloginText"><Link to='/forgot-password'>{t('login.part5')}</Link></p>
+                    <p className="altloginText text-center ">{t('login.part6')}</p>
+                    <div className="googleLogin text-center">
+                        {/* <img src={google} style={{width : "300px", height : "70px" }}/> */}
+                        <GoogleLogin
+                            clientID={clientID}
+                            onSuccess={onSuccess}
+                            onFailure={onFailure}
+                            cookiePolicy={"single_host_policy"}
 
-                    />
+                        />
+
+                    </div>
+
                 </div>
+
+
 
 
             </div>

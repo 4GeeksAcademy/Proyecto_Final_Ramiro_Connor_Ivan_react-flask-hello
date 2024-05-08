@@ -27,7 +27,7 @@ i18n
                     navbar: {
                         part1: "What is GuessNation?",
                         part2: "How to play",
-                        part3: "Log in / Sign up"
+                        part3: "Log in | Sign up"
                     },
                     footer: {
                         part1: "Made by ",

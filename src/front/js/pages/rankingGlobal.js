@@ -94,13 +94,13 @@ export const RankingGlobal = () => {
                             </tr>
                         </tbody>
                     </table>
-                    <Link to={"/game"}>
+                    
+                </div>
+                <Link to={"/game"}>
                         <div className="theButton">
-                            <a href="#" className="btn btn--action position-absolute top-50 start-100 translate-middle"><span>{t('ranking.part6')}</span></a>
+                            <a href="#" className="btn btn--action position-absolute top-50 start-50 translate-middle"><span>{t('ranking.part6')}</span></a>
                         </div>
                     </Link>
-                </div>
-
             </div>
         </div>
     );

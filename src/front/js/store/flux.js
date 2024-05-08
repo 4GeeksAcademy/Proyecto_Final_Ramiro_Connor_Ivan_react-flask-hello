@@ -1,6 +1,10 @@
 import { RecuperarContraseña } from "../pages/recuperarContraseña";
+import { useTranslation, Trans } from 'react-i18next';
 
 const getState = ({ getStore, getActions, setStore }) => {
+	const { t, i18n } = useTranslation();
+
+
 	return {
 		store: {
 			message: null,
@@ -21,28 +25,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 			question: null,
 			option1: null,
 			option2: null,
-			posicion1:null,
-			posicion2:null,
-			posicion3:null,
-			posicion4:null,
-			posicion5:null,
-			posicion6:null,
-			posicion7:null,
-			posicion8:null,
-			posicion9:null,
-			posicion10:null,
-			nombreDeUsuario:null,
-			misPuntos:null,
-			errorEmail:false,
-			errorContraseña:false,
-			errorUsuarioUso:false,
-			errorEmailUso:false,
-			contadorTermine:false,
-			contadorReinicio:false,
-			contadorPausa:false,
-			idPais:0,
-			recuperando:null,
-			recuperado:false,
+			posicion1: null,
+			posicion2: null,
+			posicion3: null,
+			posicion4: null,
+			posicion5: null,
+			posicion6: null,
+			posicion7: null,
+			posicion8: null,
+			posicion9: null,
+			posicion10: null,
+			nombreDeUsuario: null,
+			misPuntos: null,
+			errorEmail: false,
+			errorContraseña: false,
+			errorUsuarioUso: false,
+			errorEmailUso: false,
+			contadorTermine: false,
+			contadorReinicio: false,
+			contadorPausa: false,
+			idPais: 0,
+			recuperando: null,
+			recuperado: false,
 		},
 
 		actions: {
@@ -109,13 +113,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status == 200) {
 						// localStorage.setItem("token",data.token)
 						// setStore({tokenOK : true})
-						getActions().loginUsuario(email,contraseña)
-						setStore({navigate : true})
-						setStore({nombreDeUsuario : data.user.username})
-					}  else if (response.status == 420) {
-						setStore({errorUsuarioUso : true})
+						getActions().loginUsuario(email, contraseña)
+						setStore({ navigate: true })
+						setStore({ nombreDeUsuario: data.user.username })
+					} else if (response.status == 420) {
+						setStore({ errorUsuarioUso: true })
 					} else if (response.status == 418) {
-						setStore({errorEmailUso : true})
+						setStore({ errorEmailUso: true })
 					}
 					return true
 				} catch (error) {
@@ -172,9 +176,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ nombreDeUsuario: data.user.username })
 						getActions().verificacionToken()
 					} else if (response.status == 401) {
-						setStore({errorContraseña : true})
+						setStore({ errorContraseña: true })
 					} else if (response.status == 404) {
-						setStore({errorEmail : true})
+						setStore({ errorEmail: true })
 					}
 					return true
 				} catch (error) {
@@ -262,7 +266,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return true
 					} else if (response.status == 422) {
 						localStorage.removeItem("token");
-					}else if (response.status == 401) {
+					} else if (response.status == 401) {
 						localStorage.removeItem("token");
 						window.location.reload()
 					}
@@ -307,18 +311,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					console.log(response.status);
 					if (response.status == 200) {
-						
+
 					} else {
-						
-					} 
+
+					}
 					return true
 				} catch (error) {
 					console.error(err)
 
 				}
 			},
-			contador :  function () {
-				setStore({ contadorTermine: true }); 
+			contador: function () {
+				setStore({ contadorTermine: true });
 			},
 			recuperarContraseña: async function (email) {
 				try {
@@ -327,22 +331,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						headers: {
 							'Content-Type': 'application/json'
 						},
-						body:JSON.stringify({
-							"email":email
+						body: JSON.stringify({
+							"email": email
 						})
 					})
 					const data = await response.json()
 					console.log(data);
 					console.log(response.status);
 					if (response.status == 200) {
-						setStore({ recuperando: data.msg })
+						setStore({ recuperando: t('password.part6') })
 						setStore({ recuperado: true })
 						return true
-					}else if (response.status == 400) {
-						setStore({ recuperando: data.msg })
+					} else if (response.status == 400) {
+						setStore({ recuperando: t('password.part5') })
 						console.log(data.msg)
 					} else if (response.status == 401) {
-						setStore({ recuperando: data.msg })
+						setStore({ recuperando: t('password.part4') })
 						console.log(data.msg)
 					}
 					return true

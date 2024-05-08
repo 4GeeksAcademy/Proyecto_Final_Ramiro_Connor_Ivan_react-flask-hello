@@ -292,13 +292,13 @@ export const Session = () => {
         <div className="container-fluid">
 
 
-            <div className="SessionContainer cambria row">
+            <div className="SessionContainer cambria row pt-5">
                 <div className="simpleCounter  col-6 order-1 col-sm-6 order-sm-1 col-md-4 order-md-1 col-lg-4 order-lg-1 d-flex justify-content-end align-items-center">
                     <div style={{ marginRight: '20px' }}>
                         <Counter />
                     </div>
                 </div>
-                <div className="imgWrapper my-2 col-12 order-3 col-sm-12 order-sm-3  col-md-4 order-md-2 col-lg-4 order-lg-2   ">
+                <div className="imgWrapper my-2 col-12 order-3 col-sm-12 order-sm-3  col-md-4 order-md-2 col-lg-4 order-lg-2 pb-3   ">
                     <div className="d-flex justify-content-center">
                         <div className={`contenedor imagen flipper ${flipped ? "flipped" : ""}`}>
                             <img className="imgED border border-dark rounded mb-2 front" src={store.question?.image} alt="Country Scene" />
@@ -327,10 +327,10 @@ export const Session = () => {
                         </div>
                     </div>
                 </div>
-                <div className="QuestionHolder text-center col-12 order-4 col-sm-12 order-sm-4 col-md-12 order-md-4 col-lg-12 order-lg-4">
+                <div className="QuestionHolder text-center col-12 order-4 col-sm-12 order-sm-4 col-md-12 order-md-4 col-lg-12 order-lg-4 pb-3">
                     <h1 id="anunciante">{t('session.part1')}</h1>
                 </div>
-                <div className="FlagWrapper d-flex flex-row col-12 order-5 col-sm-12 order-sm-5 col-md-12 order-md-5 col-lg-12 order-lg-5 justify-content-center ">
+                <div className="FlagWrapper d-flex flex-row col-12 order-5 col-sm-12 order-sm-5 col-md-12 order-md-5 col-lg-12 order-lg-5 justify-content-center pb-5 ">
                     {/* {!showRespuestas && (
                     null
                 )}

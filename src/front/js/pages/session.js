@@ -293,7 +293,7 @@ export const Session = () => {
 
 
             <div className="SessionContainer cambria row pt-5">
-                <div className="simpleCounter  col-6 order-1 col-sm-6 order-sm-1 col-md-4 order-md-1 col-lg-4 order-lg-1 d-flex justify-content-end align-items-center">
+                <div className="simpleCounter  col-6 order-1 col-sm-6 order-sm-1 col-md-4 order-md-1 col-lg-4 order-lg-1 d-flex justify-content-center align-items-center">
                     <div style={{ marginRight: '20px' }}>
                         <Counter />
                     </div>
@@ -316,14 +316,14 @@ export const Session = () => {
                         </div>
                     </div>
                 </div>
-                <div className="pointCounter col-6 order-2 col-sm-6 order-sm-2  col-md-4 order-md-3 col-lg-4 order-lg-3  ">
+                <div className="pointCounter col-6 order-2 col-sm-6 order-sm-2  col-md-4 order-md-3 col-lg-4 order-lg-3 justify-content-center ">
                     {/* Place the nube component on the right */}
-                    <div className={`text-center nube ${flash ? 'confetti' : ''}`}>
+                    <div className={`text-center nube mb-3 ${flash ? 'confetti' : ''}`}>
                         <img src={nube} className="nube mt-3 mx-auto" />
                         {showConfetti && <Confetti />}
                         <div className="puntos">
                             <h3 className="nubetexto">{t('session.part6')}:</h3>
-                            <p>{points}</p>
+                            <p className="puntaje">{points}</p>
                         </div>
                     </div>
                 </div>

@@ -47,11 +47,11 @@ export const Login = () => {
         if (store.errorEmail == true) {
             store.errorEmail = false
             console.log("hola");
-            return <div className="text-danger mb-2">{t('login.part7')} </div>
+            return <div className="errorText text-danger ">{t('login.part7')} </div>
         } else if (store.errorContraseña == true) {
             store.errorContraseña = false
             console.log("hola");
-            return <div className="text-danger mb-2">{t('login.part7')}</div>
+            return <div className="errorText text-danger ">{t('login.part7')}</div>
         } else {
             return null
         }
@@ -80,14 +80,14 @@ export const Login = () => {
                     <input type="password" className="Formfield mb-4 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br />
                     {errorEmail()}
                     <div className="text-center">
-                        <button type="submit" className="px-5 py-1 mt-2 login mb-3">{t('login.part2')}</button>
+                        <button type="submit" className="submitButton   mt-2 login mb-3">{t('login.part2')}</button>
                     </div>
                 </form>
                 <div className="altlogin">
                     <p className="altloginText">{t('login.part3')} <Link to="/register">{t('login.part4')}</Link></p>
                     <p className="altloginText"><Link to='/forgot-password'>{t('login.part5')}</Link></p>
                     <p className="altloginText text-center ">{t('login.part6')}</p>
-                    <div className="googleLogin text-center">
+                    <div className="googleButton text-center mb-2 mx-2">
                         {/* <img src={google} style={{width : "300px", height : "70px" }}/> */}
                         <GoogleLogin
                             clientID={clientID}

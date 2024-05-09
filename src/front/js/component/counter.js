@@ -40,7 +40,7 @@ const Counter = () => {
   const color = seconds <= 5 ? "red" : "#3e98c7"; // Original color: #3e98c7
 
   return (
-    <div label="Custom animation speed" style={{ width: "150px", height: "150px" }}>
+    <div label="Custom animation speed" className="counTer mb-5">
       <CircularProgressbar
         value={percentage}
         text={`${seconds} s`}

@@ -1,6 +1,9 @@
 :root {
     --fs-norm: 1rem; /* defaults to browser's font-size definition */
   }
+.errorText {
+    font-size: large;
+}
 .altloginText{
     font-size: larger;
 }
@@ -184,6 +187,7 @@ a{
     width:4.125rem;
     height:3.250rem;
 }
+
 .imgED{
     width: 50px;
     height: 200px;
@@ -205,20 +209,43 @@ a{
     font-size: xx-large;
 }
 .Formtext{
-   font-size: large;
+   font-size: x-large;
 }
 .Formfield{
     width: 360px;
     height: 45px;
 }
+.tablewrapper{
+    width:900px;
+    height: 430px;
+}
+.counTer{
+    width: 170px; 
+    height: 75px;
+}
 
 @media screen and (max-width: 992px){
+    .errorText {
+        font-size: medium;
+    }
+    .Formtext{
+        font-size: large;
+     }
+    .btn--action{
+        display: block;
+        border-radius: 2.5rem;
+        background-color: #f6e58d;
+        color: #000;
+        transition: all .5s ease 0s; 
+        box-shadow: 0 10px #f9ca24;
+        font-size: xx-large;
+      }
+     
+      
     .altloginText{
         font-size: large;
     }
-    .login{
-        font-size: xx-large; 
-    }
+    
     .FormHeader{
         font-size:x-large;
     }
@@ -242,20 +269,28 @@ a{
         width:700px;
         height: 330px;
     }
+    .tablewrapper{
+        width:700px;
+        height: 330px;
+    }
     .segundo{
         left: 15%;
     }
     .tercero{
         left: 83%;
     }
+    .counTer{
+        width: 170px; 
+        height: 75px;
+    }
 
 }
 @media screen and (max-width: 768px ) {
+    .Formtext{
+        font-size: medium;
+     }
     .altloginText{
         font-size: medium;
-    }
-    .login{
-        font-size: x-large; 
     }
     .FormHeader{
         font-size:x-large;
@@ -274,7 +309,10 @@ a{
         width: 520px;
         height: 300px;
     }
-
+    .tablewrapper{
+        width:520px;
+        height: 300px;
+    }
     .primero{
         font-size: large;
     }
@@ -351,16 +389,28 @@ a{
         width:3.125rem;
         height:2.250rem;
     }
+    .counTer{
+        width: 120px; 
+        height: 75px;
+    }
     
 
     /*----------------Session----------------*/
 }
 @media screen and (max-width: 576px) {
+    .googleButton{
+        width:260px;
+        height: 30px;
+    }
     .altloginText{
         font-size: small;
     }
+    .errorText{
+        font-size: small;
+    }
+
     .login{
-        font-size: larger; 
+        font-size: medium; 
     }
     .FormHeader{
         font-size: larger;
@@ -373,6 +423,10 @@ a{
     }
     .podio{
         width: 450px;
+        height: 150px;
+    }
+    .tablewrapper{
+        width:450px;
         height: 150px;
     }
 
@@ -439,7 +493,41 @@ a{
     .pading-texto{
         padding: 15px;
     }
+    .counTer{
+        width: 120px; 
+        height: 75px;
+    }
     /*----------------Session----------------*/
+
+}
+@media screen and (max-width: 390px){
+    .errorText {
+        font-size: small;
+    }
+    .nubetexto{
+        padding-top: 45px;
+        font-size: small;
+    }
+    .puntaje{
+        font-size:large;
+    }
+    .podio{
+        width: 360px;
+        height: 125px;
+    }
+    .tablewrapper{
+        width:360px;
+        height: 125px;
+    }
+    .nube{
+        width: 175px; 
+        height: 75px;
+    }
+    .counTer{
+        width: 100px; 
+        height: 75px;
+    }
+    
 
 }
 .contenedor {

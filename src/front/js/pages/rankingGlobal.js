@@ -41,7 +41,7 @@ export const RankingGlobal = () => {
 
                 </div>
 
-                <div>
+                <div className="tablewrapper">
                     <table className="table back-texto3">
                         <thead>
                             <tr>

@@ -52,7 +52,7 @@
       }
       
       .btn {
-        padding: 15px;
+        padding: 15px ;
         font-weight: 700;
         font-size: 2rem;
         text-decoration: none;
@@ -110,13 +110,12 @@
       
       .btn--action{
         display: block;
-        width: 15%;
-        padding: 2rem;
         border-radius: 2.5rem;
         background-color: #f6e58d;
         color: #000;
         transition: all .5s ease 0s; 
         box-shadow: 0 10px #f9ca24;
+        font-size: xx-large;
       }
       
       /* .btn--action:hover{

@@ -118,13 +118,13 @@ export const Register = () => {
                         id="email"
                         name="email"
                         type="email"
-                        className="mb-2 w-100 login"
+                        className="Formfield mb-2 w-100 login"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.email}
                     />
                     {formik.touched.email && formik.errors.email ? (
-                        <div className="text-danger">{formik.errors.email}</div>
+                        <div className="errorText text-danger">{formik.errors.email}</div>
                     ) : null}
                     <p className="Formtext mb-0 login">{t('register.part3')}:</p>
                     {/* <input type="text" className="w-100 mb-4 login" onChange={event => setNombreDeUsuario(event.target.value)}></input> */}
@@ -132,12 +132,12 @@ export const Register = () => {
                         id="userName"
                         name="userName"
                         type="text"
-                        className="mb-2 w-100 login"
+                        className="Formfield mb-2 w-100 login"
                         onChange={formik.handleChange}
                         value={formik.values.userName}
                     />
                     {formik.touched.userName && formik.errors.userName ? (
-                        <div className="text-danger">{formik.errors.userName}</div>
+                        <div className="errorText  text-danger">{formik.errors.userName}</div>
                     ) : null}
                     <p className="Formtext mb-0 login">{t('register.part4')}:</p>
                     {/* <input type="password" className="mb-4 w-100 login" onChange={event => setContraseña(event.target.value)}></input><br/> */}
@@ -146,13 +146,13 @@ export const Register = () => {
                         name="contraseña"
                         label="Password"
                         type="password"
-                        className="mb-3 w-100 login"
+                        className="Formfield mb-3 w-100 login"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.contraseña}
                     />
                     {formik.touched.contraseña && formik.errors.contraseña ? (
-                        <div className="text-danger">{formik.errors.contraseña}</div>
+                        <div className="errorText text-danger">{formik.errors.contraseña}</div>
                     ) : null}
                     {enUso()}
                     <div className="text-center">
@@ -161,7 +161,7 @@ export const Register = () => {
                 </form>
                 <p className="altloginText mb-0">{t('register.part6')} <Link to="/login">{t('register.part7')}</Link></p>
                 <p className="altloginText text-center mb-2">{t('register.part8')}</p>
-                <div className="text-center mb-5">
+                <div className="googleButton text-center mx-2 ">
                     {/* <img src={google} style={{width : "300px", height : "70px" }}/> */}
                     <GoogleLogin
                         clientID={clientID}
